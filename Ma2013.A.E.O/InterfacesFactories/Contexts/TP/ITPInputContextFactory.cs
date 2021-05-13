@@ -1,0 +1,34 @@
+﻿namespace Ma2013.A.E.O.InterfacesFactories.Contexts.TP
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Immutable;
+
+    using Hl7.Fhir.Model;
+
+    using Ma2013.A.E.O.Interfaces.Contexts.TP;
+
+    public interface ITPInputContextFactory
+    {
+        ITPInputContext Create(
+            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
+            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
+            ImmutableList<INullableValue<int>> blockTypes,
+            ImmutableList<INullableValue<int>> lengthOfStayDays,
+            ImmutableList<INullableValue<int>> patientGroups,
+            Bundle operatingRooms,
+            Bundle surgeonGroups,
+            ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
+            INullableValue<int> numberBeds,
+            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
+            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> blockTypeTimeBlockLengths,
+            ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
+            ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
+            ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
+            ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, FhirDecimal>> patientGroupDayLengthOfStayProbabilities,
+            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
+            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardα,
+            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardβ,
+            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardγ);
+    }
+}

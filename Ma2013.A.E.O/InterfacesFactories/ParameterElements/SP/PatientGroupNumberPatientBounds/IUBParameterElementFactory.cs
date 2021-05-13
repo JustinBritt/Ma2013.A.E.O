@@ -1,0 +1,14 @@
+﻿namespace Ma2013.A.E.O.InterfacesFactories.ParameterElements.SP.PatientGroupNumberPatientBounds
+{
+    using Hl7.Fhir.Model;
+
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
+    using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupNumberPatientBounds;
+
+    public interface IUBParameterElementFactory
+    {
+        IUBParameterElement Create(
+            IpIndexElement pIndexElement,
+            PositiveInt value);
+    }
+}
