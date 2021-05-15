@@ -27,4 +27,10 @@
     <PackageReference Include="OPTANO.Modeling" Version="3.7.0.522" />
     <PackageReference Include="System.Collections.Immutable" Version="5.0.0" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Ma2013.A.E.O.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
