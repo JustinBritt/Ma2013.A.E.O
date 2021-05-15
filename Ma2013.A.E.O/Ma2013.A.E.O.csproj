@@ -29,8 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Ma2013.A.E.O.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Include="Ma2013.A.E.O.config">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
   </ItemGroup>
 </Project>
