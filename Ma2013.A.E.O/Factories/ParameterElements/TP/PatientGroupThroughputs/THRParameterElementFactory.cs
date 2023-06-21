@@ -21,7 +21,7 @@
 
         public ITHRParameterElement Create(
             IpIndexElement pIndexElement,
-            PositiveInt value)
+            INullableValue<int> value)
         {
             ITHRParameterElement parameterElement = null;
 

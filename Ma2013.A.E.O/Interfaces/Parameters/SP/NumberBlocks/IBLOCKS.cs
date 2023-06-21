@@ -4,6 +4,6 @@
 
     public interface IBLOCKS
     {
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

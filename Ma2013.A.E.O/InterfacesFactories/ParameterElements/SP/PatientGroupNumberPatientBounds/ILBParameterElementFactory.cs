@@ -9,6 +9,6 @@
     {
         ILBParameterElement Create(
             IpIndexElement pIndexElement,
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

@@ -11,6 +11,6 @@
         ImmutableList<IkIndexElement> Value { get; }
 
         IkIndexElement GetElementAt(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

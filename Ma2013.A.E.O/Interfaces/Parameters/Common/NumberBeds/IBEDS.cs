@@ -4,6 +4,6 @@
 
     public interface IBEDS
     {
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

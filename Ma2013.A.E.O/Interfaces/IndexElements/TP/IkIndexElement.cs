@@ -7,6 +7,6 @@
         /// <summary>
         /// Gets the block type.
         /// </summary>
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

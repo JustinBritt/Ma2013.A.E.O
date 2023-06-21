@@ -74,19 +74,19 @@
             // k
             this.k = indicesAbstractFactory.CreatekFactory().Create(
                 this.TPInputContext.BlockTypes
-                .Select(x => indexElementsAbstractFactory.CreatekIndexElementFactory().Create((PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreatekIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // l
             this.l = indicesAbstractFactory.CreatelFactory().Create(
                 this.TPInputContext.LengthOfStayDays
-                .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create((PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // p
             this.p = indicesAbstractFactory.CreatepFactory().Create(
                 this.TPInputContext.PatientGroups
-                .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create((PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // r
@@ -162,13 +162,13 @@
 
             // BEDS
             this.BEDS = parametersAbstractFactory.CreateBEDSFactory().Create(
-                (PositiveInt)this.TPInputContext.NumberBeds);
+                this.TPInputContext.NumberBeds);
 
             // dur(p)
             this.dur = parametersAbstractFactory.CreatedurFactory().Create(
                 this.TPInputContext.PatientGroupSurgeryDurations
                 .Select(x => parameterElementsAbstractFactory.CreatedurParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Key),
+                    this.p.GetElementAt(x.Key),
                     x.Value))
                 .ToImmutableList());
 
@@ -176,7 +176,7 @@
             this.Length = parametersAbstractFactory.CreateLengthFactory().Create(
                 this.TPInputContext.BlockTypeTimeBlockLengths
                 .Select(x => parameterElementsAbstractFactory.CreateLengthParameterElementFactory().Create(
-                    this.k.GetElementAt((PositiveInt)x.Key),
+                    this.k.GetElementAt(x.Key),
                     x.Value))
                 .ToImmutableList());
 
@@ -194,7 +194,7 @@
                 this.TPInputContext.SurgeonGroupSubsetPatientGroups
                 .Select(x => parameterElementsAbstractFactory.CreatePsParameterElementFactory().Create(
                     this.s.GetElementAt(x.Key),
-                    this.p.GetElementAt((PositiveInt)x.Value)))
+                    this.p.GetElementAt(x.Value)))
                 .ToImmutableList());
 
             // P(w)
@@ -202,15 +202,15 @@
                 this.TPInputContext.WardSubsetPatientGroups
                 .Select(x => parameterElementsAbstractFactory.CreatePwParameterElementFactory().Create(
                     this.w.GetElementAt(x.Key),
-                    this.p.GetElementAt((PositiveInt)x.Value)))
+                    this.p.GetElementAt(x.Value)))
                 .ToImmutableList());
 
             // prob(p, l)
             this.prob = parametersAbstractFactory.CreateprobFactory().Create(
                 this.TPInputContext.PatientGroupDayLengthOfStayProbabilities
                 .Select(x => parameterElementsAbstractFactory.CreateprobParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Item1),
-                    this.l.GetElementAt((PositiveInt)x.Item2),
+                    this.p.GetElementAt(x.Item1),
+                    this.l.GetElementAt(x.Item2),
                     x.Item3))
                 .ToImmutableList());
 
@@ -218,8 +218,8 @@
             this.THR = parametersAbstractFactory.CreateTHRFactory().Create(
                 this.TPInputContext.PatientGroupThroughputs
                 .Select(x => parameterElementsAbstractFactory.CreateTHRParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Key),
-                    (PositiveInt)x.Value))
+                    this.p.GetElementAt(x.Key),
+                    x.Value))
                 .ToImmutableList());
 
             // W

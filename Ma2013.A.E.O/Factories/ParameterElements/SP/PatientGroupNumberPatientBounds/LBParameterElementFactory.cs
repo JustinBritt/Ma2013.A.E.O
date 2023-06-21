@@ -21,7 +21,7 @@
 
         public ILBParameterElement Create(
             IpIndexElement pIndexElement,
-            PositiveInt value)
+            INullableValue<int> value)
         {
             ILBParameterElement parameterElement = null;
 

@@ -19,7 +19,7 @@
         }
 
         public IpIndexElement Create(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IpIndexElement indexElement = null;
 

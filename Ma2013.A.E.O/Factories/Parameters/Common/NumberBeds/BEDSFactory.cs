@@ -19,7 +19,7 @@
         }
 
         public IBEDS Create(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IBEDS parameter = null;
 

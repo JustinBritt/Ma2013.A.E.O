@@ -7,6 +7,6 @@
     public interface IpIndexElementFactory
     {
         IpIndexElement Create(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

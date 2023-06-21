@@ -69,7 +69,7 @@
             // p
             this.p = indicesAbstractFactory.CreatepFactory().Create(
                 this.SPInputContext.PatientGroups
-                .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create((PositiveInt)x))
+                .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // s
@@ -113,24 +113,24 @@
             this.A = parametersAbstractFactory.CreateAFactory().Create(
                 this.SPInputContext.PatientGroupDaySubsetActiveDays
                 .Select(x => parameterElementsAbstractFactory.CreateAParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Item1),
+                    this.p.GetElementAt(x.Item1),
                     this.d.GetElementAt(x.Item2),
                     this.a.GetElementAt(x.Item3)))
                 .ToImmutableList());
 
             // BEDS
             this.BEDS = parametersAbstractFactory.CreateBEDSFactory().Create(
-                (PositiveInt)this.SPInputContext.NumberBeds);
+                this.SPInputContext.NumberBeds);
 
             // BLOCKS
             this.BLOCKS = parametersAbstractFactory.CreateBLOCKSFactory().Create(
-                (PositiveInt)this.SPInputContext.NumberBlocks);
+                this.SPInputContext.NumberBlocks);
 
             // dur(p)
             this.dur = parametersAbstractFactory.CreatedurFactory().Create(
                 this.SPInputContext.PatientGroupSurgeryDurations
                 .Select(x => parameterElementsAbstractFactory.CreatedurParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Key),
+                    this.p.GetElementAt(x.Key),
                     x.Value))
                 .ToImmutableList());
 
@@ -138,8 +138,8 @@
             this.LB = parametersAbstractFactory.CreateLBFactory().Create(
                 this.SPInputContext.PatientGroupNumberPatientLowerBounds
                 .Select(x => parameterElementsAbstractFactory.CreateLBParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Key),
-                    (PositiveInt)x.Value))
+                    this.p.GetElementAt(x.Key),
+                    x.Value))
                 .ToImmutableList());
 
             // LENGTH
@@ -151,7 +151,7 @@
                 this.SPInputContext.SurgeonGroupSubsetPatientGroups
                 .Select(x => parameterElementsAbstractFactory.CreatePsParameterElementFactory().Create(
                     this.s.GetElementAt(x.Key),
-                    this.p.GetElementAt((PositiveInt)x.Value)))
+                    this.p.GetElementAt(x.Value)))
                 .ToImmutableList());
 
             // P(w)
@@ -159,14 +159,14 @@
                 this.SPInputContext.WardSubsetPatientGroups
                 .Select(x => parameterElementsAbstractFactory.CreatePwParameterElementFactory().Create(
                     this.w.GetElementAt(x.Key),
-                    this.p.GetElementAt((PositiveInt)x.Value)))
+                    this.p.GetElementAt(x.Value)))
                 .ToImmutableList());
 
             // r
             this.r = parametersAbstractFactory.CreaterFactory().Create(
                 this.SPInputContext.PatientGroupProfits
                 .Select(x => parameterElementsAbstractFactory.CreaterParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Key),
+                    this.p.GetElementAt(x.Key),
                     x.Value))
                 .ToImmutableList());
 
@@ -174,8 +174,8 @@
             this.UB = parametersAbstractFactory.CreateUBFactory().Create(
                 this.SPInputContext.PatientGroupNumberPatientUpperBounds
                 .Select(x => parameterElementsAbstractFactory.CreateUBParameterElementFactory().Create(
-                    this.p.GetElementAt((PositiveInt)x.Key),
-                    (PositiveInt)x.Value))
+                    this.p.GetElementAt(x.Key),
+                    x.Value))
                 .ToImmutableList());
 
             // Variables

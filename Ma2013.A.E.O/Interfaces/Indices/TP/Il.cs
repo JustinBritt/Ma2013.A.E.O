@@ -14,7 +14,7 @@
             int value);
 
         IlIndexElement GetElementAt(
-            PositiveInt value);
+            INullableValue<int> value);
 
         int GetMaximumLengthOfStay();
     }

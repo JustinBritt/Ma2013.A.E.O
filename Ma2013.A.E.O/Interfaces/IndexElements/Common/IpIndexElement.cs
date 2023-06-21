@@ -7,6 +7,6 @@
         /// <summary>
         /// Gets the patient group.
         /// </summary>
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

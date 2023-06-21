@@ -7,6 +7,6 @@
     public interface IBEDSFactory
     {
         IBEDS Create(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

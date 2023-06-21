@@ -7,6 +7,6 @@
     public interface IBLOCKSFactory
     {
         IBLOCKS Create(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

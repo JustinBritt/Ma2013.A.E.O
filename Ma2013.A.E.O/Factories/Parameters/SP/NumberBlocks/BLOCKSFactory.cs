@@ -19,7 +19,7 @@
         }
 
         public IBLOCKS Create(
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IBLOCKS parameter = null;
 

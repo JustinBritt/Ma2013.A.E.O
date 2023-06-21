@@ -13,7 +13,7 @@
 
         public LBParameterElement(
             IpIndexElement pIndexElement,
-            PositiveInt value)
+            INullableValue<int> value)
         {
             this.pIndexElement = pIndexElement;
 
@@ -22,6 +22,6 @@
 
         public IpIndexElement pIndexElement { get; }
 
-        public PositiveInt Value { get; }
+        public INullableValue<int> Value { get; }
     }
 }

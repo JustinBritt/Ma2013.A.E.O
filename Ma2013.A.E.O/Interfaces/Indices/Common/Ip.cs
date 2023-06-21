@@ -11,6 +11,6 @@
         ImmutableList<IpIndexElement> Value { get; }
 
         IpIndexElement GetElementAt(
-            PositiveInt value);
+            INullableValue<int> value);
     }
 }

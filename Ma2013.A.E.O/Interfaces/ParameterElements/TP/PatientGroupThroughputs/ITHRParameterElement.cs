@@ -8,6 +8,6 @@
     {
         IpIndexElement pIndexElement { get; }
 
-        PositiveInt Value { get; }
+        INullableValue<int> Value { get; }
     }
 }

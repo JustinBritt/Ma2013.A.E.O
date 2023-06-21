@@ -21,7 +21,7 @@
 
         public IUBParameterElement Create(
             IpIndexElement pIndexElement,
-            PositiveInt value)
+            INullableValue<int> value)
         {
             IUBParameterElement parameterElement = null;
 
