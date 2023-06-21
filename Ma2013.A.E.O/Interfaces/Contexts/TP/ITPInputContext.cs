@@ -36,7 +36,7 @@
 
         ImmutableList<KeyValuePair<Organization, INullableValue<int>>> WardSubsetPatientGroups { get; }
 
-        ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, FhirDecimal>> PatientGroupDayLengthOfStayProbabilities { get; }
+        ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> PatientGroupDayLengthOfStayProbabilities { get; }
 
         ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupThroughputs { get; }
 

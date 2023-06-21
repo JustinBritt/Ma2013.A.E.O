@@ -15,7 +15,7 @@
         public probParameterElement(
             IpIndexElement pIndexElement,
             IlIndexElement lIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             this.pIndexElement = pIndexElement;
 
@@ -28,6 +28,6 @@
 
         public IlIndexElement lIndexElement { get; }
 
-        public FhirDecimal Value { get; }
+        public INullableValue<decimal> Value { get; }
     }
 }

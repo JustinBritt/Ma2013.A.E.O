@@ -8,6 +8,6 @@
     {
         IwIndexElement wIndexElement { get; }
 
-        FhirDecimal Value { get; }
+        INullableValue<decimal> Value { get; }
     }
 }

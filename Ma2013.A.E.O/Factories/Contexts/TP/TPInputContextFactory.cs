@@ -35,7 +35,7 @@
             ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
-            ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, FhirDecimal>> patientGroupDayLengthOfStayProbabilities,
+            ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
             ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardα,
             ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardβ,

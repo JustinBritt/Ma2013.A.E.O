@@ -235,7 +235,7 @@
                 this.TPInputContext.Wardα
                 .Select(x => parameterElementsAbstractFactory.CreateαParameterElementFactory().Create(
                     this.w.GetElementAt(x.Key),
-                    (FhirDecimal)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // β(w)
@@ -243,7 +243,7 @@
                 this.TPInputContext.Wardβ
                 .Select(x => parameterElementsAbstractFactory.CreateβParameterElementFactory().Create(
                     this.w.GetElementAt(x.Key),
-                    (FhirDecimal)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // γ(w)
@@ -251,7 +251,7 @@
                 this.TPInputContext.Wardγ
                 .Select(x => parameterElementsAbstractFactory.CreateγParameterElementFactory().Create(
                     this.w.GetElementAt(x.Key),
-                    (FhirDecimal)x.Value))
+                    x.Value))
                 .ToImmutableList());
 
             // Variables

@@ -11,6 +11,6 @@
 
         IlIndexElement lIndexElement { get; }
 
-        FhirDecimal Value { get; }
+        INullableValue<decimal> Value { get; }
     }
 }

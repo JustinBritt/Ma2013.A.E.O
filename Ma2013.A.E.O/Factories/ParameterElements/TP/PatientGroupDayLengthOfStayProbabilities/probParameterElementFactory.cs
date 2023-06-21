@@ -23,7 +23,7 @@
         public IprobParameterElement Create(
             IpIndexElement pIndexElement,
             IlIndexElement lIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             IprobParameterElement parameterElement = null;
 

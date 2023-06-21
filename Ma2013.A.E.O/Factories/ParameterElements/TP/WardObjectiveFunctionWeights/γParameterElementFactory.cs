@@ -21,7 +21,7 @@
 
         public IγParameterElement Create(
             IwIndexElement wIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             IγParameterElement parameterElement = null;
 

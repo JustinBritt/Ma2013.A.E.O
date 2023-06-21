@@ -9,6 +9,6 @@
     {
         IαParameterElement Create(
             IwIndexElement wIndexElement,
-            FhirDecimal value);
+            INullableValue<decimal> value);
     }
 }

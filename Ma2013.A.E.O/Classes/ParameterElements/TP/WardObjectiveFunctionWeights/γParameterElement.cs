@@ -13,7 +13,7 @@
 
         public γParameterElement(
             IwIndexElement wIndexElement,
-            FhirDecimal value)
+            INullableValue<decimal> value)
         {
             this.wIndexElement = wIndexElement;
 
@@ -22,6 +22,6 @@
 
         public IwIndexElement wIndexElement { get; }
 
-        public FhirDecimal Value { get; }
+        public INullableValue<decimal> Value { get; }
     }
 }
