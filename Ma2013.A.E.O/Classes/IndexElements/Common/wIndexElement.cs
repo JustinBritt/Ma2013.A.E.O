@@ -16,9 +16,7 @@
             this.Value = value;
         }
 
-        /// <summary>
-        /// Gets the ward.
-        /// </summary>
+        /// <inheritdoc/>
         public Organization Value { get; }
     }
 }

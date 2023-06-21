@@ -16,9 +16,7 @@
             this.Value = value;
         }
 
-        /// <summary>
-        /// Gets the block type.
-        /// </summary>
+        /// <inheritdoc/>
         public PositiveInt Value { get; }
     }
 }
