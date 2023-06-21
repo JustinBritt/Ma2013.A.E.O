@@ -24,5 +24,13 @@
 
         /// <inheritdoc/>
         public FhirDateTime Value { get; }
+
+        /// <inheritdoc/>
+        public int CompareTo(
+            IdIndexElement other)
+        {
+            return this.Key.CompareTo(
+                other.Key);
+        }
     }
 }
