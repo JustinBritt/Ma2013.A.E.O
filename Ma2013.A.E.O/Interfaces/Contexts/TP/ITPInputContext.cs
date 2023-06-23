@@ -9,7 +9,7 @@
 
     public interface ITPInputContext
     {
-        ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> ActiveDays { get; }
+        RedBlackTree<INullableValue<int>, FhirDateTime> ActiveDays { get; }
 
         ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 

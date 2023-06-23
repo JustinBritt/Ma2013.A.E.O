@@ -13,7 +13,7 @@
     public interface ITPInputContextFactory
     {
         ITPInputContext Create(
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
+            RedBlackTree<INullableValue<int>, FhirDateTime> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
             ImmutableSortedSet<INullableValue<int>> blockTypes,
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,

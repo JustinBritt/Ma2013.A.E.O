@@ -17,7 +17,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public TPInputContext(
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
+            RedBlackTree<INullableValue<int>, FhirDateTime> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
             ImmutableSortedSet<INullableValue<int>> blockTypes,
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
@@ -76,7 +76,7 @@
             this.Wardγ = wardγ;
         }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> ActiveDays { get; }
+        public RedBlackTree<INullableValue<int>, FhirDateTime> ActiveDays { get; }
 
         public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 

@@ -17,7 +17,7 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SPInputContext(
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
+            RedBlackTree<INullableValue<int>, FhirDateTime> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle surgeonGroups,
@@ -64,7 +64,7 @@
             this.PatientGroupNumberPatientUpperBounds = patientGroupNumberPatientUpperBounds;
         }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> ActiveDays { get; }
+        public RedBlackTree<INullableValue<int>, FhirDateTime> ActiveDays { get; }
 
         public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 
