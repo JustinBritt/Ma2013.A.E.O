@@ -36,6 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="InterfacesVisitors\Contexts\Common\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 </Project>
