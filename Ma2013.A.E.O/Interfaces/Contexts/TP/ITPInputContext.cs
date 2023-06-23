@@ -11,7 +11,7 @@
     {
         RedBlackTree<INullableValue<int>, FhirDateTime> ActiveDays { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
+        RedBlackTree<INullableValue<int>, FhirDateTime> Days { get; }
 
         ImmutableSortedSet<INullableValue<int>> BlockTypes { get; }
 

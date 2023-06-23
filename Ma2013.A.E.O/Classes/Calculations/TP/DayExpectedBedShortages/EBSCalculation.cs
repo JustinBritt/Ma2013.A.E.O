@@ -33,7 +33,7 @@
             IVariance Variance)
         {
             return EBSFactory.Create(
-                d.Value
+                d.Value.Values
                 .Select(y => EBSResultElementCalculation.Calculate(
                     EBSResultElementFactory,
                     y,

@@ -18,7 +18,7 @@
 
         public TPInputContext(
             RedBlackTree<INullableValue<int>, FhirDateTime> activeDays,
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
+            RedBlackTree<INullableValue<int>, FhirDateTime> days,
             ImmutableSortedSet<INullableValue<int>> blockTypes,
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
             ImmutableSortedSet<INullableValue<int>> patientGroups,
@@ -78,7 +78,7 @@
 
         public RedBlackTree<INullableValue<int>, FhirDateTime> ActiveDays { get; }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
+        public RedBlackTree<INullableValue<int>, FhirDateTime> Days { get; }
 
         public ImmutableSortedSet<INullableValue<int>> BlockTypes { get; }
 

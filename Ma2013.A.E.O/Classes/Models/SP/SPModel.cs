@@ -66,12 +66,15 @@
                 activeDaysVisitor.RedBlackTree);
 
             // d
+            IDaysVisitor<INullableValue<int>, FhirDateTime> daysVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.DaysVisitor<INullableValue<int>, FhirDateTime>(
+                indexElementsAbstractFactory.CreatedIndexElementFactory(),
+                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+
+            this.SPInputContext.Days.AcceptVisitor(
+                daysVisitor);
+
             this.d = indicesAbstractFactory.CreatedFactory().Create(
-                this.SPInputContext.Days
-                .Select(x => indexElementsAbstractFactory.CreatedIndexElementFactory().Create(
-                    x.Key.Value.Value,
-                    x.Value))
-                .ToImmutableList());
+                daysVisitor.RedBlackTree);
 
             // p
             this.p = indicesAbstractFactory.CreatepFactory().Create(
@@ -111,7 +114,7 @@
             // wd
             this.wd = crossJoinsAbstractFactory.CreatewdFactory().Create(
                 this.w.Value
-                .SelectMany(b => this.d.Value, (a, b) => crossJoinElementsAbstractFactory.CreatewdCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.d.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatewdCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // Parameters

@@ -72,12 +72,15 @@
                 activeDaysVisitor.RedBlackTree);
 
             // d
+            IDaysVisitor<INullableValue<int>, FhirDateTime> daysVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.DaysVisitor<INullableValue<int>, FhirDateTime>(
+                indexElementsAbstractFactory.CreatedIndexElementFactory(),
+                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+
+            this.TPInputContext.Days.AcceptVisitor(
+                daysVisitor);
+
             this.d = indicesAbstractFactory.CreatedFactory().Create(
-                this.TPInputContext.Days
-                .Select(x => indexElementsAbstractFactory.CreatedIndexElementFactory().Create(
-                    x.Key.Value.Value,
-                    x.Value))
-                .ToImmutableList());
+                daysVisitor.RedBlackTree);
 
             // k
             this.k = indicesAbstractFactory.CreatekFactory().Create(
@@ -163,7 +166,7 @@
             // wd
             this.wd = crossJoinsAbstractFactory.CreatewdFactory().Create(
                 this.w.Value
-                .SelectMany(b => this.d.Value, (a, b) => crossJoinElementsAbstractFactory.CreatewdCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.d.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatewdCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // Parameters
@@ -312,7 +315,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.w.Value, 
-                    indexSet2: this.d.Value, 
+                    indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => double.MaxValue, 
                     variableTypeGenerator: (a, b) => VariableType.Continuous));
@@ -331,7 +334,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.w.Value, 
-                    indexSet2: this.d.Value, 
+                    indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => double.MaxValue, 
                     variableTypeGenerator: (a, b) => VariableType.Continuous));
@@ -341,7 +344,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.w.Value, 
-                    indexSet2: this.d.Value, 
+                    indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0,
                     upperBoundGenerator: (a, b) => double.MaxValue,
                     variableTypeGenerator: (a, b) => VariableType.Continuous));
@@ -360,7 +363,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.w.Value, 
-                    indexSet2: this.d.Value, 
+                    indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => double.MaxValue,
                     variableTypeGenerator: (a, b) => VariableType.Continuous));

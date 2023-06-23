@@ -28,7 +28,7 @@
             Iμ μ)
         {
             return dayBedRequirementMeansFactory.Create(
-                d.Value
+                d.Value.Values
                 .Select(y => dayBedRequirementMeansResultElementCalculation.Calculate(
                     dayBedRequirementMeansResultElementFactory,
                     y,

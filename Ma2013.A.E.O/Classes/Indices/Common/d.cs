@@ -1,11 +1,12 @@
 ﻿namespace Ma2013.A.E.O.Classes.Indices.Common
 {
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
 
@@ -14,24 +15,22 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public d(
-            ImmutableList<IdIndexElement> value)
+            RedBlackTree<FhirDateTime, IdIndexElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IdIndexElement> Value { get; }
+        public RedBlackTree<FhirDateTime, IdIndexElement> Value { get; }
 
         public IdIndexElement GetElementAt(
             FhirDateTime value)
         {
-            return this.Value
-                .Where(x => x.Value == value)
-                .SingleOrDefault();
+            return this.Value[value];
         }
 
         public int GetMaximumKey()
         {
-            return this.Value
+            return this.Value.Values
                 .Select(w => w.Key)
                 .Max();
         }

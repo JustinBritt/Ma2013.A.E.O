@@ -38,7 +38,7 @@
                         i)
                     *
                     Expression.Sum(
-                        d.Value
+                        d.Value.Values
                         .Select(
                             j => 
                             δMinus.Value[i, j]))

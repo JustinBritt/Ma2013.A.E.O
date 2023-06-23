@@ -24,7 +24,7 @@
 
         public ITPInputContext Create(
             RedBlackTree<INullableValue<int>, FhirDateTime> activeDays,
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
+            RedBlackTree<INullableValue<int>, FhirDateTime> days,
             ImmutableSortedSet<INullableValue<int>> blockTypes,
             ImmutableSortedSet<INullableValue<int>> lengthOfStayDays,
             ImmutableSortedSet<INullableValue<int>> patientGroups,

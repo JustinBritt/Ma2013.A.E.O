@@ -28,7 +28,7 @@
             IVariance Variance)
         {
             return dayBedRequirementVariancesFactory.Create(
-                d.Value
+                d.Value.Values
                 .Select(y => dayBedRequirementVariancesResultElementCalculation.Calculate(
                     dayBedRequirementVariancesResultElementFactory,
                     y,

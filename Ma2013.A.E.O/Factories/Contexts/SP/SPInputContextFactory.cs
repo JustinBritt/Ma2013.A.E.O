@@ -24,7 +24,7 @@
 
         public ISPInputContext Create(
             RedBlackTree<INullableValue<int>, FhirDateTime> activeDays,
-            ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
+            RedBlackTree<INullableValue<int>, FhirDateTime> days,
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,

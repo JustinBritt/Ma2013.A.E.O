@@ -5,13 +5,14 @@
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+
     using NGenerics.DataStructures.Trees;
 
     public interface ISPInputContext
     {
         RedBlackTree<INullableValue<int>, FhirDateTime> ActiveDays { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
+        RedBlackTree<INullableValue<int>, FhirDateTime> Days { get; }
 
         ImmutableSortedSet<INullableValue<int>> PatientGroups { get; }
 
