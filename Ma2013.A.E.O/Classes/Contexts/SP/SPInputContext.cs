@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Interfaces.Contexts.SP;
 
     internal sealed class SPInputContext : ISPInputContext
@@ -28,7 +30,7 @@
             Duration timeBlockLength,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
-            ImmutableList<KeyValuePair<INullableValue<int>, Money>> patientGroupProfits,
+            RedBlackTree<INullableValue<int>, Money> patientGroupProfits,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientUpperBounds)
         {
             this.ActiveDays = activeDays;
@@ -88,7 +90,7 @@
 
         public ImmutableList<KeyValuePair<Organization, INullableValue<int>>> WardSubsetPatientGroups { get; }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, Money>> PatientGroupProfits { get; }
+        public RedBlackTree<INullableValue<int>, Money> PatientGroupProfits { get; }
 
         public ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientUpperBounds { get; }
     }

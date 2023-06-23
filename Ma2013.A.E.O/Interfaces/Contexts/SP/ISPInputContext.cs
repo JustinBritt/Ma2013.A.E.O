@@ -5,6 +5,7 @@
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+    using NGenerics.DataStructures.Trees;
 
     public interface ISPInputContext
     {
@@ -34,7 +35,7 @@
 
         ImmutableList<KeyValuePair<Organization, INullableValue<int>>> WardSubsetPatientGroups { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, Money>> PatientGroupProfits { get; }
+        RedBlackTree<INullableValue<int>, Money> PatientGroupProfits { get; }
 
         ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientUpperBounds { get; }
     }

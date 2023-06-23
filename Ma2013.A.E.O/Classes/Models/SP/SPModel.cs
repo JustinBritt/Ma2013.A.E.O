@@ -162,7 +162,7 @@
                     this.p.GetElementAt(x.Value)))
                 .ToImmutableList());
 
-            // r
+            // r(p)
             this.r = parametersAbstractFactory.CreaterFactory().Create(
                 this.SPInputContext.PatientGroupProfits
                 .Select(x => parameterElementsAbstractFactory.CreaterParameterElementFactory().Create(

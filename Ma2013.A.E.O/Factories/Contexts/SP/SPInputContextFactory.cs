@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Classes.Contexts.SP;
     using Ma2013.A.E.O.Interfaces.Contexts.SP;
     using Ma2013.A.E.O.InterfacesFactories.Contexts.SP;
@@ -34,7 +36,7 @@
             Duration timeBlockLength,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
-            ImmutableList<KeyValuePair<INullableValue<int>, Money>> patientGroupProfits,
+            RedBlackTree<INullableValue<int>, Money> patientGroupProfits,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientUpperBounds)
         {
             ISPInputContext context = null;
