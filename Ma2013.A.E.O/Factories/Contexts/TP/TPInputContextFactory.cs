@@ -33,7 +33,7 @@
             INullableValue<int> numberBeds,
             RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             RedBlackTree<INullableValue<int>, Duration> blockTypeTimeBlockLengths,
-            ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
+            RedBlackTree<FhirDateTime, RedBlackTree<Location, Duration>> dayOperatingRoomOperatingCapacities,
             RedBlackTree<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroups,
             RedBlackTree<Organization, INullableValue<int>> wardSubsetPatientGroups,
             ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,

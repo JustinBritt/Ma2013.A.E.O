@@ -35,6 +35,7 @@
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.Common;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.TP;
     using Ma2013.A.E.O.Visitors.Contexts.TP;
+    using NGenerics.DataStructures.Trees;
 
     internal sealed class TPModel : ITPModel
     {
@@ -198,13 +199,16 @@
                 blockTypeTimeBlockLengthsVisitor.RedBlackTree);
 
             // ORday(a, r)
+            IDayOperatingRoomOperatingCapacitiesOuterVisitor<FhirDateTime, RedBlackTree<Location, Duration>> dayOperatingRoomOperatingCapacitiesOuterVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.DayOperatingRoomOperatingCapacitiesOuterVisitor<FhirDateTime, RedBlackTree<Location, Duration>>(
+                parameterElementsAbstractFactory.CreateORdayParameterElementFactory(),
+                this.a,
+                this.r);
+
+            this.TPInputContext.DayOperatingRoomOperatingCapacities.AcceptVisitor(
+                dayOperatingRoomOperatingCapacitiesOuterVisitor);
+
             this.ORday = parametersAbstractFactory.CreateORdayFactory().Create(
-                this.TPInputContext.DayOperatingRoomOperatingCapacities
-                .Select(x => parameterElementsAbstractFactory.CreateORdayParameterElementFactory().Create(
-                    this.a.GetElementAt(x.Item1),
-                    this.r.GetElementAt(x.Item2),
-                    x.Item3))
-                .ToImmutableList());
+                dayOperatingRoomOperatingCapacitiesOuterVisitor.RedBlackTree);
 
             // P(s)
             ISurgeonGroupSubsetPatientGroupsVisitor<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.SurgeonGroupSubsetPatientGroupsVisitor<Organization, INullableValue<int>>(

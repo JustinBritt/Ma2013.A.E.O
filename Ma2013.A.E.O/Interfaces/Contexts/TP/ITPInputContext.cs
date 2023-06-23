@@ -30,7 +30,7 @@
 
         RedBlackTree<INullableValue<int>, Duration> BlockTypeTimeBlockLengths { get; }
 
-        ImmutableList<Tuple<FhirDateTime, Location, Duration>> DayOperatingRoomOperatingCapacities { get; }
+        RedBlackTree<FhirDateTime, RedBlackTree<Location, Duration>> DayOperatingRoomOperatingCapacities { get; }
 
         RedBlackTree<Organization, INullableValue<int>> SurgeonGroupSubsetPatientGroups { get; }
 
