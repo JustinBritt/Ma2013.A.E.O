@@ -34,7 +34,7 @@
             ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
             RedBlackTree<Organization, INullableValue<decimal>> wardα,
-            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardβ,
+            RedBlackTree<Organization, INullableValue<decimal>> wardβ,
             ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardγ)
         {
             this.ActiveDays = activeDays;
@@ -110,7 +110,7 @@
 
         public RedBlackTree<Organization, INullableValue<decimal>> Wardα { get; }
 
-        public ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> Wardβ { get; }
+        public RedBlackTree<Organization, INullableValue<decimal>> Wardβ { get; }
 
         public ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> Wardγ { get; }
     }

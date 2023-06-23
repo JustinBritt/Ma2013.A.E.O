@@ -40,7 +40,7 @@
             ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
             RedBlackTree<Organization, INullableValue<decimal>> wardα,
-            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardβ,
+            RedBlackTree<Organization, INullableValue<decimal>> wardβ,
             ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardγ)
         {
             ITPInputContext context = null;

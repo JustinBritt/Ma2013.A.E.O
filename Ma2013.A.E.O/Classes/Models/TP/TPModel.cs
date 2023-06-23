@@ -249,12 +249,15 @@
                 wardαVisitor.RedBlackTree);
 
             // β(w)
+            IWardβVisitor<Organization, INullableValue<decimal>> wardβVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.WardβVisitor<Organization, INullableValue<decimal>>(
+                parameterElementsAbstractFactory.CreateβParameterElementFactory(),
+                this.w);
+
+            this.TPInputContext.Wardβ.AcceptVisitor(
+                wardβVisitor);
+
             this.β = parametersAbstractFactory.CreateβFactory().Create(
-                this.TPInputContext.Wardβ
-                .Select(x => parameterElementsAbstractFactory.CreateβParameterElementFactory().Create(
-                    this.w.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                wardβVisitor.RedBlackTree);
 
             // γ(w)
             this.γ = parametersAbstractFactory.CreateγFactory().Create(
