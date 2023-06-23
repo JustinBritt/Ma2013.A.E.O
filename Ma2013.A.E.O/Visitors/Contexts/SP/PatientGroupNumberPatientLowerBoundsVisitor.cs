@@ -27,6 +27,8 @@
             this.LBParameterElementFactory = LBParameterElementFactory;
 
             this.p = p;
+
+            this.RedBlackTree = new RedBlackTree<IpIndexElement, ILBParameterElement>();
         }
 
         private ILBParameterElementFactory LBParameterElementFactory { get; }
