@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Interfaces.Contexts.SP
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
