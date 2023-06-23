@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="InterfacesVisitors\Contexts\" />
-    <Folder Include="Interfaces\Comparers\" />
     <Folder Include="Visitors\Contexts\" />
   </ItemGroup>
 </Project>
