@@ -23,7 +23,7 @@
             ITPx x)
         {
             Expression LHS = Expression.Sum(
-                a.Value
+                a.Value.Values
                 .Select(
                    i => x.Value[pIndexElement, i]));
 

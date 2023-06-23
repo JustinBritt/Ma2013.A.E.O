@@ -61,12 +61,15 @@
             // Indices
 
             // a
+            IActiveDaysVisitor<INullableValue<int>, FhirDateTime> activeDaysVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.ActiveDaysVisitor<INullableValue<int>, FhirDateTime>(
+                indexElementsAbstractFactory.CreateaIndexElementFactory(),
+                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+
+            this.TPInputContext.ActiveDays.AcceptVisitor(
+                activeDaysVisitor);
+
             this.a = indicesAbstractFactory.CreateaFactory().Create(
-                this.TPInputContext.ActiveDays
-                .Select(x => indexElementsAbstractFactory.CreateaIndexElementFactory().Create(
-                    x.Key.Value.Value,
-                    x.Value))
-                .ToImmutableList());
+                activeDaysVisitor.RedBlackTree);
 
             // d
             this.d = indicesAbstractFactory.CreatedFactory().Create(
@@ -121,14 +124,14 @@
 
             // ar
             this.ar = crossJoinsAbstractFactory.CreatearFactory().Create(
-                this.a.Value
+                this.a.Value.Values
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatearCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // pa
             this.pa = crossJoinsAbstractFactory.CreatepaFactory().Create(
                 this.p.Value
-                .SelectMany(b => this.a.Value, (a, b) => crossJoinElementsAbstractFactory.CreatepaCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatepaCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // rk
@@ -140,13 +143,13 @@
             // sa
             this.sa = crossJoinsAbstractFactory.CreatesaFactory().Create(
                 this.s.Value
-                .SelectMany(b => this.a.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // sark
             this.sark = crossJoinsAbstractFactory.CreatesarkFactory().Create(
                 this.s.Value
-                .SelectMany(b => this.a.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, b))
                 .SelectMany(b => this.k.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarkCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
@@ -278,7 +281,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.p.Value, 
-                    indexSet2: this.a.Value,
+                    indexSet2: this.a.Value.Values,
                     lowerBoundGenerator: (a, b) => 0,
                     upperBoundGenerator: (a, b) => int.MaxValue,
                     variableTypeGenerator: (a, b) => VariableType.Integer));
@@ -297,7 +300,7 @@
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
                     indexSet1: this.s.Value, 
-                    indexSet2: this.a.Value, 
+                    indexSet2: this.a.Value.Values, 
                     indexSet3: this.r.Value, 
                     indexSet4: this.k.Value, 
                     lowerBoundGenerator: (a, b, c, d) => 0,
