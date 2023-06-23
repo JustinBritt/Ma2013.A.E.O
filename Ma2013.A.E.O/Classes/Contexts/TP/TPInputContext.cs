@@ -19,7 +19,7 @@
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
             ImmutableList<INullableValue<int>> blockTypes,
             ImmutableList<INullableValue<int>> lengthOfStayDays,
-            ImmutableList<INullableValue<int>> patientGroups,
+            ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle operatingRooms,
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
@@ -82,7 +82,7 @@
 
         public ImmutableList<INullableValue<int>> LengthOfStayDays { get; }
 
-        public ImmutableList<INullableValue<int>> PatientGroups { get; }
+        public ImmutableSortedSet<INullableValue<int>> PatientGroups { get; }
 
         public Bundle OperatingRooms { get; }
 

@@ -23,7 +23,7 @@
         public ISPInputContext Create(
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
-            ImmutableList<INullableValue<int>> patientGroups,
+            ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
             ImmutableList<Tuple<INullableValue<int>, FhirDateTime, FhirDateTime>> patientGroupDaySubsetActiveDays,

@@ -17,7 +17,7 @@
         public SPInputContext(
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
-            ImmutableList<INullableValue<int>> patientGroups,
+            ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
             ImmutableList<Tuple<INullableValue<int>, FhirDateTime, FhirDateTime>> patientGroupDaySubsetActiveDays,
@@ -69,7 +69,7 @@
 
         public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 
-        public ImmutableList<INullableValue<int>> PatientGroups { get; }
+        public ImmutableSortedSet<INullableValue<int>> PatientGroups { get; }
 
         public Bundle SurgeonGroups { get; }
 

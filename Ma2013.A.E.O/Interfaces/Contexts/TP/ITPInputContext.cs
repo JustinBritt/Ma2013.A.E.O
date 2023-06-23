@@ -16,7 +16,7 @@
 
         ImmutableList<INullableValue<int>> LengthOfStayDays { get; }
 
-        ImmutableList<INullableValue<int>> PatientGroups { get; }
+        ImmutableSortedSet<INullableValue<int>> PatientGroups { get; }
 
         Bundle OperatingRooms { get; }
 

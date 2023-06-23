@@ -15,7 +15,7 @@
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
             ImmutableList<INullableValue<int>> blockTypes,
             ImmutableList<INullableValue<int>> lengthOfStayDays,
-            ImmutableList<INullableValue<int>> patientGroups,
+            ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle operatingRooms,
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,

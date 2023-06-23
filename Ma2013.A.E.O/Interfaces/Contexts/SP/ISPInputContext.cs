@@ -12,7 +12,7 @@
 
         ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 
-        ImmutableList<INullableValue<int>> PatientGroups { get; }
+        ImmutableSortedSet<INullableValue<int>> PatientGroups { get; }
 
         Bundle SurgeonGroups { get; }
 
