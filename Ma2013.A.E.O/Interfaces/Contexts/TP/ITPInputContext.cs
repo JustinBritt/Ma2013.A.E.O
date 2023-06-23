@@ -45,6 +45,6 @@
 
         RedBlackTree<Organization, INullableValue<decimal>> Wardβ { get; }
 
-        ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> Wardγ { get; }
+        RedBlackTree<Organization, INullableValue<decimal>> Wardγ { get; }
     }
 }

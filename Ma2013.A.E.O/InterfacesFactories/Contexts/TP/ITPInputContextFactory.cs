@@ -31,6 +31,6 @@
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
             RedBlackTree<Organization, INullableValue<decimal>> wardα,
             RedBlackTree<Organization, INullableValue<decimal>> wardβ,
-            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardγ);
+            RedBlackTree<Organization, INullableValue<decimal>> wardγ);
     }
 }

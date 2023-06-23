@@ -34,6 +34,7 @@
     using Ma2013.A.E.O.Interfaces.Variables.TP.WardNumberBedAssignments;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.Common;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.TP;
+    using Ma2013.A.E.O.Visitors.Contexts.TP;
 
     internal sealed class TPModel : ITPModel
     {
@@ -260,12 +261,15 @@
                 wardβVisitor.RedBlackTree);
 
             // γ(w)
+            IWardγVisitor<Organization, INullableValue<decimal>> wardγVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.WardγVisitor<Organization, INullableValue<decimal>>(
+                parameterElementsAbstractFactory.CreateγParameterElementFactory(),
+                this.w);
+
+            this.TPInputContext.Wardγ.AcceptVisitor(
+                wardγVisitor);
+
             this.γ = parametersAbstractFactory.CreateγFactory().Create(
-                this.TPInputContext.Wardγ
-                .Select(x => parameterElementsAbstractFactory.CreateγParameterElementFactory().Create(
-                    this.w.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                wardγVisitor.RedBlackTree);
 
             // Variables
 
