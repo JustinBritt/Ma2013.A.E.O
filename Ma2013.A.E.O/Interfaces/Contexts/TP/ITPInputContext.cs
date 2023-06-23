@@ -15,7 +15,7 @@
 
         ImmutableSortedSet<INullableValue<int>> BlockTypes { get; }
 
-        ImmutableList<INullableValue<int>> LengthOfStayDays { get; }
+        ImmutableSortedSet<INullableValue<int>> LengthOfStayDays { get; }
 
         ImmutableSortedSet<INullableValue<int>> PatientGroups { get; }
 
