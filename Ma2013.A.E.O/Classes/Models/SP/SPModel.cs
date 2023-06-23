@@ -139,12 +139,15 @@
                 .ToImmutableList());
 
             // LB(p)
+            IPatientGroupNumberPatientLowerBoundsVisitor<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBoundsVisitor = new Ma2013.A.E.O.Visitors.Contexts.SP.PatientGroupNumberPatientLowerBoundsVisitor<INullableValue<int>, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreateLBParameterElementFactory(),
+                this.p);
+
+            this.SPInputContext.PatientGroupNumberPatientLowerBounds.AcceptVisitor(
+                patientGroupNumberPatientLowerBoundsVisitor);
+
             this.LB = parametersAbstractFactory.CreateLBFactory().Create(
-                this.SPInputContext.PatientGroupNumberPatientLowerBounds
-                .Select(x => parameterElementsAbstractFactory.CreateLBParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                patientGroupNumberPatientLowerBoundsVisitor.RedBlackTree);
 
             // LENGTH
             this.LENGTH = parametersAbstractFactory.CreateLENGTHFactory().Create(

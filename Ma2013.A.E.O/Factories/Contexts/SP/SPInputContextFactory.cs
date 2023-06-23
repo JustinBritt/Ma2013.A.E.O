@@ -32,7 +32,7 @@
             INullableValue<int> numberBeds,
             INullableValue<int> numberBlocks,
             ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
-            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientLowerBounds,
+            RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBounds,
             Duration timeBlockLength,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,

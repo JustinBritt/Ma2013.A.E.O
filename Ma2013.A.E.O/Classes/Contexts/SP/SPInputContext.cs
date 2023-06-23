@@ -26,7 +26,7 @@
             INullableValue<int> numberBeds,
             INullableValue<int> numberBlocks,
             ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
-            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientLowerBounds,
+            RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBounds,
             Duration timeBlockLength,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
@@ -82,7 +82,7 @@
 
         public ImmutableList<KeyValuePair<INullableValue<int>, Duration>> PatientGroupSurgeryDurations { get; }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientLowerBounds { get; }
+        public RedBlackTree<INullableValue<int>, INullableValue<int>> PatientGroupNumberPatientLowerBounds { get; }
 
         public Duration TimeBlockLength { get; }
 

@@ -1,11 +1,13 @@
 ﻿namespace Ma2013.A.E.O.Factories.Parameters.SP.PatientGroupNumberPatientBounds
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Classes.Parameters.SP.PatientGroupNumberPatientBounds;
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupNumberPatientBounds;
     using Ma2013.A.E.O.Interfaces.Parameters.SP.PatientGroupNumberPatientBounds;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.PatientGroupNumberPatientBounds;
@@ -19,7 +21,7 @@
         }
 
         public ILB Create(
-            ImmutableList<ILBParameterElement> value)
+            RedBlackTree<IpIndexElement, ILBParameterElement> value)
         {
             ILB parameter = null;
 
