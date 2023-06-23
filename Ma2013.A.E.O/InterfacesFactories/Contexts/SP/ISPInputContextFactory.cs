@@ -24,7 +24,7 @@
             RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBounds,
             Duration timeBlockLength,
-            ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
+            RedBlackTree<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroups,
             RedBlackTree<Organization, INullableValue<int>> wardSubsetPatientGroups,
             RedBlackTree<INullableValue<int>, Money> patientGroupProfits,
             RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientUpperBounds);

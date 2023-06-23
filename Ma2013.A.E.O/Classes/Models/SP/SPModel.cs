@@ -163,12 +163,16 @@
                 this.SPInputContext.TimeBlockLength);
 
             // P(s)
+            ISurgeonGroupSubsetPatientGroupsVisitor<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.SurgeonGroupSubsetPatientGroupsVisitor<Organization, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreatePsParameterElementFactory(),
+                this.p,
+                this.s);
+
+            this.SPInputContext.SurgeonGroupSubsetPatientGroups.AcceptVisitor(
+                surgeonGroupSubsetPatientGroupsVisitor);
+
             this.Ps = parametersAbstractFactory.CreatePsFactory().Create(
-                this.SPInputContext.SurgeonGroupSubsetPatientGroups
-                .Select(x => parameterElementsAbstractFactory.CreatePsParameterElementFactory().Create(
-                    this.s.GetElementAt(x.Key),
-                    this.p.GetElementAt(x.Value)))
-                .ToImmutableList());
+                surgeonGroupSubsetPatientGroupsVisitor.RedBlackTree);
 
             // P(w)
             IWardSubsetPatientGroupsVisitor<Organization, INullableValue<int>> wardSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.WardSubsetPatientGroupsVisitor<Organization, INullableValue<int>>(

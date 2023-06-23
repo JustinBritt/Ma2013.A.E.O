@@ -33,7 +33,7 @@
 
         ImmutableList<Tuple<FhirDateTime, Location, Duration>> DayOperatingRoomOperatingCapacities { get; }
 
-        ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgeonGroupSubsetPatientGroups { get; }
+        RedBlackTree<Organization, INullableValue<int>> SurgeonGroupSubsetPatientGroups { get; }
 
         RedBlackTree<Organization, INullableValue<int>> WardSubsetPatientGroups { get; }
 
