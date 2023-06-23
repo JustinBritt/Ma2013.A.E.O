@@ -29,7 +29,6 @@
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
             ImmutableList<KeyValuePair<INullableValue<int>, Money>> patientGroupProfits,
-            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientUpperBounds)
         {
             this.ActiveDays = activeDays;
@@ -59,8 +58,6 @@
             this.WardSubsetPatientGroups = wardSubsetPatientGroups;
 
             this.PatientGroupProfits = patientGroupProfits;
-
-            this.PatientGroupThroughputs = patientGroupThroughputs;
 
             this.PatientGroupNumberPatientUpperBounds = patientGroupNumberPatientUpperBounds;
         }
@@ -92,8 +89,6 @@
         public ImmutableList<KeyValuePair<Organization, INullableValue<int>>> WardSubsetPatientGroups { get; }
 
         public ImmutableList<KeyValuePair<INullableValue<int>, Money>> PatientGroupProfits { get; }
-
-        public ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupThroughputs { get; }
 
         public ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientUpperBounds { get; }
     }

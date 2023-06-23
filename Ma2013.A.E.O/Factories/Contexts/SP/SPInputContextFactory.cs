@@ -35,7 +35,6 @@
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
             ImmutableList<KeyValuePair<INullableValue<int>, Money>> patientGroupProfits,
-            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientUpperBounds)
         {
             ISPInputContext context = null;
@@ -57,7 +56,6 @@
                     surgeonGroupSubsetPatientGroups,
                     wardSubsetPatientGroups,
                     patientGroupProfits,
-                    patientGroupThroughputs,
                     patientGroupNumberPatientUpperBounds);
             }
             catch (Exception exception)

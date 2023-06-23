@@ -36,8 +36,6 @@
 
         ImmutableList<KeyValuePair<INullableValue<int>, Money>> PatientGroupProfits { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupThroughputs { get; }
-
         ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientUpperBounds { get; }
     }
 }
