@@ -229,12 +229,15 @@
                 .ToImmutableList());
 
             // THR(p)
+            IPatientGroupThroughputsVisitor<INullableValue<int>, INullableValue<int>> patientGroupThroughputsVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.PatientGroupThroughputsVisitor<INullableValue<int>, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreateTHRParameterElementFactory(),
+                this.p);
+
+            this.TPInputContext.PatientGroupThroughputs.AcceptVisitor(
+                patientGroupThroughputsVisitor);
+
             this.THR = parametersAbstractFactory.CreateTHRFactory().Create(
-                this.TPInputContext.PatientGroupThroughputs
-                .Select(x => parameterElementsAbstractFactory.CreateTHRParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                patientGroupThroughputsVisitor.RedBlackTree);
 
             // W
             this.W = parametersAbstractFactory.CreateWFactory().Create(

@@ -32,7 +32,7 @@
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
             ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,
-            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
+            RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupThroughputs,
             RedBlackTree<Organization, INullableValue<decimal>> wardα,
             RedBlackTree<Organization, INullableValue<decimal>> wardβ,
             RedBlackTree<Organization, INullableValue<decimal>> wardγ)
@@ -106,7 +106,7 @@
 
         public ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> PatientGroupDayLengthOfStayProbabilities { get; }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupThroughputs { get; }
+        public RedBlackTree<INullableValue<int>, INullableValue<int>> PatientGroupThroughputs { get; }
 
         public RedBlackTree<Organization, INullableValue<decimal>> Wardα { get; }
 
