@@ -1,11 +1,13 @@
 ﻿namespace Ma2013.A.E.O.Factories.Parameters.SP.PatientGroupProfits
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Classes.Parameters.SP.PatientGroupProfits;
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupProfits;
     using Ma2013.A.E.O.Interfaces.Parameters.SP.PatientGroupProfits;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.PatientGroupProfits;
@@ -19,7 +21,7 @@
         }
 
         public Ir Create(
-            ImmutableList<IrParameterElement> value)
+            RedBlackTree<IpIndexElement, IrParameterElement> value)
         {
             Ir parameter = null;
 

@@ -1,11 +1,10 @@
 ﻿namespace Ma2013.A.E.O.Classes.Parameters.SP.PatientGroupProfits
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupProfits;
@@ -16,29 +15,23 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public r(
-            ImmutableList<IrParameterElement> value)
+            RedBlackTree<IpIndexElement, IrParameterElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IrParameterElement> Value { get; }
+        public RedBlackTree<IpIndexElement, IrParameterElement> Value { get; }
 
         public Money GetElementAt(
             IpIndexElement pIndexElement)
         {
-            return this.Value
-                .Where(x => x.pIndexElement == pIndexElement)
-                .Select(x => x.Value)
-                .SingleOrDefault();
+            return this.Value[pIndexElement].Value;
         }
 
         public decimal GetElementAtAsdecimal(
             IpIndexElement pIndexElement)
         {
-            return this.Value
-                .Where(x => x.pIndexElement == pIndexElement)
-                .Select(x => x.Value.Value.Value)
-                .SingleOrDefault();
+            return this.Value[pIndexElement].Value.Value.Value;
         }
     }
 }

@@ -7,6 +7,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.Patterns.Visitor;
+
     using OPTANO.Modeling.Optimization;
     using OPTANO.Modeling.Optimization.Enums;
 
@@ -25,6 +27,8 @@
     using Ma2013.A.E.O.Interfaces.Variables.SP.PatientGroupActiveDayNumberPatients;
     using Ma2013.A.E.O.Interfaces.Variables.SP.SurgeonGroupActiveDayNumberBlockAssignments;
     using Ma2013.A.E.O.Interfaces.Variables.SP.WardNumberBedAssignments;
+    using Ma2013.A.E.O.InterfacesVisitors.Contexts.SP;
+    using NGenerics.DataStructures.Trees;
 
     internal sealed class SPModel : ISPModel
     {
@@ -163,12 +167,15 @@
                 .ToImmutableList());
 
             // r(p)
+            IPatientGroupProfitsVisitor<INullableValue<int>, Money> patientGroupProfitsVisitor = new Ma2013.A.E.O.Visitors.Contexts.SP.PatientGroupProfitsVisitor<INullableValue<int>, Money>(
+                parameterElementsAbstractFactory.CreaterParameterElementFactory(),
+                this.p);
+
+            this.SPInputContext.PatientGroupProfits.AcceptVisitor(
+                patientGroupProfitsVisitor);
+
             this.r = parametersAbstractFactory.CreaterFactory().Create(
-                this.SPInputContext.PatientGroupProfits
-                .Select(x => parameterElementsAbstractFactory.CreaterParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                patientGroupProfitsVisitor.RedBlackTree);
 
             // UB(p)
             this.UB = parametersAbstractFactory.CreateUBFactory().Create(
