@@ -7,6 +7,7 @@
     using Hl7.Fhir.Model;
 
     using Ma2013.A.E.O.Interfaces.Contexts.TP;
+    using NGenerics.DataStructures.Trees;
 
     public interface ITPInputContextFactory
     {
@@ -20,7 +21,7 @@
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
             INullableValue<int> numberBeds,
-            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
+            RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             ImmutableList<KeyValuePair<INullableValue<int>, Duration>> blockTypeTimeBlockLengths,
             ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,

@@ -27,8 +27,8 @@
     using Ma2013.A.E.O.Interfaces.Variables.SP.PatientGroupActiveDayNumberPatients;
     using Ma2013.A.E.O.Interfaces.Variables.SP.SurgeonGroupActiveDayNumberBlockAssignments;
     using Ma2013.A.E.O.Interfaces.Variables.SP.WardNumberBedAssignments;
+    using Ma2013.A.E.O.InterfacesVisitors.Contexts.Common;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.SP;
-    using NGenerics.DataStructures.Trees;
 
     internal sealed class SPModel : ISPModel
     {
@@ -131,12 +131,15 @@
                 this.SPInputContext.NumberBlocks);
 
             // dur(p)
-            this.dur = parametersAbstractFactory.CreatedurFactory().Create(
-                this.SPInputContext.PatientGroupSurgeryDurations
-                .Select(x => parameterElementsAbstractFactory.CreatedurParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+            IPatientGroupSurgeryDurationsVisitor<INullableValue<int>, Duration> patientGroupSurgeryDurationsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.PatientGroupSurgeryDurationsVisitor<INullableValue<int>, Duration>(
+                parameterElementsAbstractFactory.CreatedurParameterElementFactory(),
+                this.p);
+
+            this.SPInputContext.PatientGroupSurgeryDurations.AcceptVisitor(
+                patientGroupSurgeryDurationsVisitor);
+
+            this.dur= parametersAbstractFactory.CreatedurFactory().Create(
+                patientGroupSurgeryDurationsVisitor.RedBlackTree);
 
             // LB(p)
             IPatientGroupNumberPatientLowerBoundsVisitor<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBoundsVisitor = new Ma2013.A.E.O.Visitors.Contexts.SP.PatientGroupNumberPatientLowerBoundsVisitor<INullableValue<int>, INullableValue<int>>(

@@ -25,7 +25,7 @@
 
         INullableValue<int> NumberBlocks { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, Duration>> PatientGroupSurgeryDurations { get; }
+        RedBlackTree<INullableValue<int>, Duration> PatientGroupSurgeryDurations { get; }
 
         RedBlackTree<INullableValue<int>, INullableValue<int>> PatientGroupNumberPatientLowerBounds { get; }
 

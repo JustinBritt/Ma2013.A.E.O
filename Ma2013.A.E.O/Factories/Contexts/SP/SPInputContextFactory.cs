@@ -31,7 +31,7 @@
             ImmutableList<Tuple<INullableValue<int>, FhirDateTime, FhirDateTime>> patientGroupDaySubsetActiveDays,
             INullableValue<int> numberBeds,
             INullableValue<int> numberBlocks,
-            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
+            RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBounds,
             Duration timeBlockLength,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,

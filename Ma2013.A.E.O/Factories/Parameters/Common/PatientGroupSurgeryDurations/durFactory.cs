@@ -1,11 +1,13 @@
 ﻿namespace Ma2013.A.E.O.Factories.Parameters.Common.PatientGroupSurgeryDurations
 {
     using System;
-    using System.Collections.Immutable;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Classes.Parameters.Common.PatientGroupSurgeryDurations;
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ParameterElements.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.Interfaces.Parameters.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.PatientGroupSurgeryDurations;
@@ -19,7 +21,7 @@
         }
 
         public Idur Create(
-            ImmutableList<IdurParameterElement> value)
+            RedBlackTree<IpIndexElement, IdurParameterElement> value)
         {
             Idur parameter = null;
 

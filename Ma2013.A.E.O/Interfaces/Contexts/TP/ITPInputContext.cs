@@ -5,6 +5,7 @@
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+    using NGenerics.DataStructures.Trees;
 
     public interface ITPInputContext
     {
@@ -26,7 +27,7 @@
 
         INullableValue<int> NumberBeds { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, Duration>> PatientGroupSurgeryDurations { get; }
+        RedBlackTree<INullableValue<int>, Duration> PatientGroupSurgeryDurations { get; }
 
         ImmutableList<KeyValuePair<INullableValue<int>, Duration>> BlockTypeTimeBlockLengths { get; }
 

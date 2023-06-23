@@ -8,10 +8,12 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Classes.Contexts.TP;
     using Ma2013.A.E.O.Interfaces.Contexts.TP;
     using Ma2013.A.E.O.InterfacesFactories.Contexts.TP;
-
+    
     internal sealed class TPInputContextFactory : ITPInputContextFactory
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -30,7 +32,7 @@
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
             INullableValue<int> numberBeds,
-            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
+            RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             ImmutableList<KeyValuePair<INullableValue<int>, Duration>> blockTypeTimeBlockLengths,
             ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,

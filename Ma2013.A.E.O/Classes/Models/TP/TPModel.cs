@@ -7,6 +7,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.Patterns.Visitor;
+
     using OPTANO.Modeling.Optimization;
     using OPTANO.Modeling.Optimization.Enums;
 
@@ -30,6 +32,7 @@
     using Ma2013.A.E.O.Interfaces.Variables.TP.WardDayBedAvailabilityDeviations;
     using Ma2013.A.E.O.Interfaces.Variables.TP.WardDayBedRequirementMeans;
     using Ma2013.A.E.O.Interfaces.Variables.TP.WardNumberBedAssignments;
+    using Ma2013.A.E.O.InterfacesVisitors.Contexts.Common;
 
     internal sealed class TPModel : ITPModel
     {
@@ -165,12 +168,15 @@
                 this.TPInputContext.NumberBeds);
 
             // dur(p)
+            IPatientGroupSurgeryDurationsVisitor<INullableValue<int>, Duration> patientGroupSurgeryDurationsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.PatientGroupSurgeryDurationsVisitor<INullableValue<int>, Duration>(
+                parameterElementsAbstractFactory.CreatedurParameterElementFactory(),
+                this.p);
+
+            this.TPInputContext.PatientGroupSurgeryDurations.AcceptVisitor(
+                patientGroupSurgeryDurationsVisitor);
+
             this.dur = parametersAbstractFactory.CreatedurFactory().Create(
-                this.TPInputContext.PatientGroupSurgeryDurations
-                .Select(x => parameterElementsAbstractFactory.CreatedurParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                patientGroupSurgeryDurationsVisitor.RedBlackTree);
 
             // Length(k)
             this.Length = parametersAbstractFactory.CreateLengthFactory().Create(

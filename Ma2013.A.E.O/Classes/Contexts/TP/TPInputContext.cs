@@ -8,6 +8,8 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Interfaces.Contexts.TP;
 
     public sealed class TPInputContext : ITPInputContext
@@ -24,7 +26,7 @@
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
             INullableValue<int> numberBeds,
-            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> patientGroupSurgeryDurations,
+            RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             ImmutableList<KeyValuePair<INullableValue<int>, Duration>> blockTypeTimeBlockLengths,
             ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
@@ -92,7 +94,7 @@
 
         public INullableValue<int> NumberBeds { get; }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, Duration>> PatientGroupSurgeryDurations { get; }
+        public RedBlackTree<INullableValue<int>, Duration> PatientGroupSurgeryDurations { get; }
 
         public ImmutableList<KeyValuePair<INullableValue<int>, Duration>> BlockTypeTimeBlockLengths { get; }
 
