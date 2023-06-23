@@ -34,9 +34,4 @@
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="InterfacesVisitors\SP\" />
-    <Folder Include="Visitors\Contexts\SP\" />
-  </ItemGroup>
 </Project>
