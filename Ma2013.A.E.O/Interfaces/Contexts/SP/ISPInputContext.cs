@@ -37,6 +37,6 @@
 
         RedBlackTree<INullableValue<int>, Money> PatientGroupProfits { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientUpperBounds { get; }
+        RedBlackTree<INullableValue<int>, INullableValue<int>> PatientGroupNumberPatientUpperBounds { get; }
     }
 }

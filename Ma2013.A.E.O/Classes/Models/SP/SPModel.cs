@@ -181,12 +181,15 @@
                 patientGroupProfitsVisitor.RedBlackTree);
 
             // UB(p)
+            IPatientGroupNumberPatientUpperBoundsVisitor<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientUpperBoundsVisitor = new Ma2013.A.E.O.Visitors.Contexts.SP.PatientGroupNumberPatientUpperBoundsVisitor<INullableValue<int>, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreateUBParameterElementFactory(),
+                this.p);
+
+            this.SPInputContext.PatientGroupNumberPatientUpperBounds.AcceptVisitor(
+                patientGroupNumberPatientUpperBoundsVisitor);
+
             this.UB = parametersAbstractFactory.CreateUBFactory().Create(
-                this.SPInputContext.PatientGroupNumberPatientUpperBounds
-                .Select(x => parameterElementsAbstractFactory.CreateUBParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                patientGroupNumberPatientUpperBoundsVisitor.RedBlackTree);
 
             // Variables
 

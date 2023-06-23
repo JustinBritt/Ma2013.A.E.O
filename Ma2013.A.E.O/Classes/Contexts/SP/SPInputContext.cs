@@ -31,7 +31,7 @@
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
             RedBlackTree<INullableValue<int>, Money> patientGroupProfits,
-            ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupNumberPatientUpperBounds)
+            RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientUpperBounds)
         {
             this.ActiveDays = activeDays;
 
@@ -92,6 +92,6 @@
 
         public RedBlackTree<INullableValue<int>, Money> PatientGroupProfits { get; }
 
-        public ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupNumberPatientUpperBounds { get; }
+        public RedBlackTree<INullableValue<int>, INullableValue<int>> PatientGroupNumberPatientUpperBounds { get; }
     }
 }
