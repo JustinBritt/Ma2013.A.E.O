@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="InterfacesVisitors\Contexts\" />
-    <Folder Include="Visitors\Contexts\" />
+    <Folder Include="InterfacesVisitors\Contexts\Common\" />
+    <Folder Include="Visitors\Contexts\Common\" />
   </ItemGroup>
 </Project>
