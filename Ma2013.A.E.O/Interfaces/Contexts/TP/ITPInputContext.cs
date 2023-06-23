@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Interfaces.Contexts.TP
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
@@ -29,7 +28,7 @@
 
         RedBlackTree<INullableValue<int>, Duration> PatientGroupSurgeryDurations { get; }
 
-        ImmutableList<KeyValuePair<INullableValue<int>, Duration>> BlockTypeTimeBlockLengths { get; }
+        RedBlackTree<INullableValue<int>, Duration> BlockTypeTimeBlockLengths { get; }
 
         ImmutableList<Tuple<FhirDateTime, Location, Duration>> DayOperatingRoomOperatingCapacities { get; }
 

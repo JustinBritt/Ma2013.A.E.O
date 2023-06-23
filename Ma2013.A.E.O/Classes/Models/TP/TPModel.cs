@@ -187,12 +187,15 @@
                 patientGroupSurgeryDurationsVisitor.RedBlackTree);
 
             // Length(k)
+            IBlockTypeTimeBlockLengthsVisitor<INullableValue<int>, Duration> blockTypeTimeBlockLengthsVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.BlockTypeTimeBlockLengthsVisitor<INullableValue<int>, Duration>(
+                parameterElementsAbstractFactory.CreateLengthParameterElementFactory(),
+                this.k);
+
+            this.TPInputContext.BlockTypeTimeBlockLengths.AcceptVisitor(
+                blockTypeTimeBlockLengthsVisitor);
+
             this.Length = parametersAbstractFactory.CreateLengthFactory().Create(
-                this.TPInputContext.BlockTypeTimeBlockLengths
-                .Select(x => parameterElementsAbstractFactory.CreateLengthParameterElementFactory().Create(
-                    this.k.GetElementAt(x.Key),
-                    x.Value))
-                .ToImmutableList());
+                blockTypeTimeBlockLengthsVisitor.RedBlackTree);
 
             // ORday(a, r)
             this.ORday = parametersAbstractFactory.CreateORdayFactory().Create(

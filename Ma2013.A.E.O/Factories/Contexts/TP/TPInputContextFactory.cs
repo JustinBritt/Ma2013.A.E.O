@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Factories.Contexts.TP
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using log4net;
@@ -33,7 +32,7 @@
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
             INullableValue<int> numberBeds,
             RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
-            ImmutableList<KeyValuePair<INullableValue<int>, Duration>> blockTypeTimeBlockLengths,
+            RedBlackTree<INullableValue<int>, Duration> blockTypeTimeBlockLengths,
             ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
             RedBlackTree<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroups,
             RedBlackTree<Organization, INullableValue<int>> wardSubsetPatientGroups,
