@@ -17,7 +17,7 @@
         public TPInputContext(
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
-            ImmutableList<INullableValue<int>> blockTypes,
+            ImmutableSortedSet<INullableValue<int>> blockTypes,
             ImmutableList<INullableValue<int>> lengthOfStayDays,
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle operatingRooms,
@@ -78,7 +78,7 @@
 
         public ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 
-        public ImmutableList<INullableValue<int>> BlockTypes { get; }
+        public ImmutableSortedSet<INullableValue<int>> BlockTypes { get; }
 
         public ImmutableList<INullableValue<int>> LengthOfStayDays { get; }
 

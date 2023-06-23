@@ -12,7 +12,7 @@
 
         ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> Days { get; }
 
-        ImmutableList<INullableValue<int>> BlockTypes { get; }
+        ImmutableSortedSet<INullableValue<int>> BlockTypes { get; }
 
         ImmutableList<INullableValue<int>> LengthOfStayDays { get; }
 

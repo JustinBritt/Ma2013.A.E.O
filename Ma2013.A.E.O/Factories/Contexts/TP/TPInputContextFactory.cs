@@ -23,7 +23,7 @@
         public ITPInputContext Create(
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> activeDays,
             ImmutableList<KeyValuePair<INullableValue<int>, FhirDateTime>> days,
-            ImmutableList<INullableValue<int>> blockTypes,
+            ImmutableSortedSet<INullableValue<int>> blockTypes,
             ImmutableList<INullableValue<int>> lengthOfStayDays,
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle operatingRooms,
