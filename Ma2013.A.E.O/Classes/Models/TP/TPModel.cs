@@ -235,13 +235,16 @@
                 wardSubsetPatientGroupsVisitor.RedBlackTree);
 
             // prob(p, l)
+            IPatientGroupDayLengthOfStayProbabilitiesOuterVisitor<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilitiesOuterVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.PatientGroupDayLengthOfStayProbabilitiesOuterVisitor<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>>(
+                parameterElementsAbstractFactory.CreateprobParameterElementFactory(),
+                this.l,
+                this.p);
+
+            this.TPInputContext.PatientGroupDayLengthOfStayProbabilities.AcceptVisitor(
+                patientGroupDayLengthOfStayProbabilitiesOuterVisitor);
+
             this.prob = parametersAbstractFactory.CreateprobFactory().Create(
-                this.TPInputContext.PatientGroupDayLengthOfStayProbabilities
-                .Select(x => parameterElementsAbstractFactory.CreateprobParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Item1),
-                    this.l.GetElementAt(x.Item2),
-                    x.Item3))
-                .ToImmutableList());
+                patientGroupDayLengthOfStayProbabilitiesOuterVisitor.RedBlackTree);
 
             // THR(p)
             IPatientGroupThroughputsVisitor<INullableValue<int>, INullableValue<int>> patientGroupThroughputsVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.PatientGroupThroughputsVisitor<INullableValue<int>, INullableValue<int>>(

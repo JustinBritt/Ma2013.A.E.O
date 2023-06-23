@@ -1,9 +1,8 @@
 ﻿namespace Ma2013.A.E.O.Classes.Parameters.TP.PatientGroupDayLengthOfStayProbabilities
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.IndexElements.TP;
@@ -15,21 +14,18 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public prob(
-            ImmutableList<IprobParameterElement> value)
+            RedBlackTree<IpIndexElement, RedBlackTree<IlIndexElement, IprobParameterElement>> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IprobParameterElement> Value { get; }
+        public RedBlackTree<IpIndexElement, RedBlackTree<IlIndexElement, IprobParameterElement>> Value { get; }
 
         public decimal GetElementAtAsdecimal(
             IpIndexElement pIndexElement,
             IlIndexElement lIndexElement)
         {
-            return this.Value
-                .Where(x => x.pIndexElement == pIndexElement && x.lIndexElement == lIndexElement)
-                .Select(x => x.Value.Value.Value)
-                .SingleOrDefault();
+            return this.Value[pIndexElement][lIndexElement].Value.Value.Value;
         }
     }
 }

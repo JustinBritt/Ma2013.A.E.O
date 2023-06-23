@@ -36,7 +36,7 @@
 
         RedBlackTree<Organization, INullableValue<int>> WardSubsetPatientGroups { get; }
 
-        ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> PatientGroupDayLengthOfStayProbabilities { get; }
+        RedBlackTree<INullableValue<int>, RedBlackTree<INullableValue<int>, INullableValue<decimal>>> PatientGroupDayLengthOfStayProbabilities { get; }
 
         RedBlackTree<INullableValue<int>, INullableValue<int>> PatientGroupThroughputs { get; }
 

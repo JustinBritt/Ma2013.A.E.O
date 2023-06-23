@@ -1,6 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Interfaces.Parameters.TP.PatientGroupDayLengthOfStayProbabilities
 {
-    using System.Collections.Immutable;
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.IndexElements.TP;
@@ -8,7 +8,7 @@
 
     public interface Iprob
     {
-        ImmutableList<IprobParameterElement> Value { get; }
+        RedBlackTree<IpIndexElement, RedBlackTree<IlIndexElement, IprobParameterElement>> Value { get; }
 
         decimal GetElementAtAsdecimal(
             IpIndexElement pIndexElement,
