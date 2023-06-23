@@ -26,7 +26,7 @@
             ImmutableList<KeyValuePair<INullableValue<int>, Duration>> blockTypeTimeBlockLengths,
             ImmutableList<Tuple<FhirDateTime, Location, Duration>> dayOperatingRoomOperatingCapacities,
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> surgeonGroupSubsetPatientGroups,
-            ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
+            RedBlackTree<Organization, INullableValue<int>> wardSubsetPatientGroups,
             ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,
             RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupThroughputs,
             RedBlackTree<Organization, INullableValue<decimal>> wardα,

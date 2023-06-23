@@ -171,12 +171,16 @@
                 .ToImmutableList());
 
             // P(w)
+            IWardSubsetPatientGroupsVisitor<Organization, INullableValue<int>> wardSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.WardSubsetPatientGroupsVisitor<Organization, INullableValue<int>>(
+                parameterElementsAbstractFactory.CreatePwParameterElementFactory(),
+                this.p,
+                this.w);
+
+            this.SPInputContext.WardSubsetPatientGroups.AcceptVisitor(
+                wardSubsetPatientGroupsVisitor);
+
             this.Pw = parametersAbstractFactory.CreatePwFactory().Create(
-                this.SPInputContext.WardSubsetPatientGroups
-                .Select(x => parameterElementsAbstractFactory.CreatePwParameterElementFactory().Create(
-                    this.w.GetElementAt(x.Key),
-                    this.p.GetElementAt(x.Value)))
-                .ToImmutableList());
+                wardSubsetPatientGroupsVisitor.RedBlackTree);
 
             // r(p)
             IPatientGroupProfitsVisitor<INullableValue<int>, Money> patientGroupProfitsVisitor = new Ma2013.A.E.O.Visitors.Contexts.SP.PatientGroupProfitsVisitor<INullableValue<int>, Money>(

@@ -34,7 +34,7 @@
 
         ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgeonGroupSubsetPatientGroups { get; }
 
-        ImmutableList<KeyValuePair<Organization, INullableValue<int>>> WardSubsetPatientGroups { get; }
+        RedBlackTree<Organization, INullableValue<int>> WardSubsetPatientGroups { get; }
 
         RedBlackTree<INullableValue<int>, Money> PatientGroupProfits { get; }
 
