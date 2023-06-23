@@ -39,7 +39,7 @@
             ImmutableList<KeyValuePair<Organization, INullableValue<int>>> wardSubsetPatientGroups,
             ImmutableList<Tuple<INullableValue<int>, INullableValue<int>, INullableValue<decimal>>> patientGroupDayLengthOfStayProbabilities,
             ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> patientGroupThroughputs,
-            ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardα,
+            RedBlackTree<Organization, INullableValue<decimal>> wardα,
             ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardβ,
             ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> wardγ)
         {

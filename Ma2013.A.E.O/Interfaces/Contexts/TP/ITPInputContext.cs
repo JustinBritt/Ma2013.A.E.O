@@ -41,7 +41,7 @@
 
         ImmutableList<KeyValuePair<INullableValue<int>, INullableValue<int>>> PatientGroupThroughputs { get; }
 
-        ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> Wardα { get; }
+        RedBlackTree<Organization, INullableValue<decimal>> Wardα { get; }
 
         ImmutableList<KeyValuePair<Organization, INullableValue<decimal>>> Wardβ { get; }
 
