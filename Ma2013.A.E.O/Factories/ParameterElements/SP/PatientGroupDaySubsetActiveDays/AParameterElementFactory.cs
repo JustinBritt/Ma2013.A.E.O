@@ -1,6 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Factories.ParameterElements.SP.PatientGroupDaySubsetActiveDays
 {
     using System;
+    using System.Collections.Immutable;
 
     using log4net;
 
@@ -19,8 +20,8 @@
 
         public IAParameterElement Create(
             IpIndexElement pIndexElement,
-            IdIndexElement dIndexElement,
-            IaIndexElement aIndexElement)
+            IaIndexElement aIndexElement,
+            ImmutableList<IdIndexElement> value)
         {
             IAParameterElement parameterElement = null;
 
@@ -28,8 +29,8 @@
             {
                 parameterElement = new AParameterElement(
                     pIndexElement,
-                    dIndexElement,
-                    aIndexElement);
+                    aIndexElement,
+                    value);
             }
             catch (Exception exception)
             {

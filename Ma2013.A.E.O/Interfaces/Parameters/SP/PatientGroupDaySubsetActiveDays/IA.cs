@@ -2,16 +2,17 @@
 {
     using System.Collections.Immutable;
 
+    using NGenerics.DataStructures.Trees;
+
+    using Ma2013.A.E.O.Interfaces.CrossJoinElements.Common;
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
-    using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupDaySubsetActiveDays;
 
     public interface IA
     {
-        ImmutableList<IAParameterElement> Value { get; }
+        RedBlackTree<IpaCrossJoinElement, ImmutableList<IdIndexElement>> Value { get; }
 
         bool IsThereElementAt(
-            IpIndexElement pIndexElement,
-            IdIndexElement dIndexElement,
-            IaIndexElement aIndexElement);
+            IpaCrossJoinElement paCrossJoinElement,
+            IdIndexElement dIndexElement);
     }
 }

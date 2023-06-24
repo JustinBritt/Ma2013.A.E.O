@@ -36,9 +36,8 @@
                         i.pIndexElement) 
                     &&
                     A.IsThereElementAt(
-                        i.pIndexElement,
-                        dIndexElement,
-                        i.aIndexElement))
+                        i,
+                        dIndexElement))
                 .Select(
                    i => x.Value[i.pIndexElement, i.aIndexElement]));
 

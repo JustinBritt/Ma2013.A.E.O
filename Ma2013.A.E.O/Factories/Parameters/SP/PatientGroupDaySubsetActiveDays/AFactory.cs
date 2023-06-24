@@ -5,8 +5,11 @@
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Classes.Parameters.SP.PatientGroupDaySubsetActiveDays;
-    using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupDaySubsetActiveDays;
+    using Ma2013.A.E.O.Interfaces.CrossJoinElements.Common;
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.Parameters.SP.PatientGroupDaySubsetActiveDays;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.PatientGroupDaySubsetActiveDays;
 
@@ -19,7 +22,7 @@
         }
 
         public IA Create(
-            ImmutableList<IAParameterElement> value)
+            RedBlackTree<IpaCrossJoinElement, ImmutableList<IdIndexElement>> value)
         {
             IA parameter = null;
 

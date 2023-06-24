@@ -1,5 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Classes.ParameterElements.SP.PatientGroupDaySubsetActiveDays
 {
+    using System.Collections.Immutable;
+
     using log4net;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
@@ -11,20 +13,20 @@
 
         public AParameterElement(
             IpIndexElement pIndexElement,
-            IdIndexElement dIndexElement,
-            IaIndexElement aIndexElement)
+            IaIndexElement aIndexElement,
+            ImmutableList<IdIndexElement> value)
         {
             this.pIndexElement = pIndexElement;
 
-            this.dIndexElement = dIndexElement;
-
             this.aIndexElement = aIndexElement;
+
+            this.Value = value;
         }
 
         public IpIndexElement pIndexElement { get; }
 
-        public IdIndexElement dIndexElement { get; }
-
         public IaIndexElement aIndexElement { get; }
+
+        public ImmutableList<IdIndexElement> Value { get; }
     }
 }

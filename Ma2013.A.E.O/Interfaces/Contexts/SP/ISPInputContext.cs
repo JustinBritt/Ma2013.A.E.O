@@ -19,7 +19,7 @@
 
         ImmutableList<Tuple<Organization, ImmutableList<Organization>>> Wards { get; }
 
-        ImmutableList<Tuple<INullableValue<int>, FhirDateTime, FhirDateTime>> PatientGroupDaySubsetActiveDays { get; }
+        RedBlackTree<Tuple<INullableValue<int>, FhirDateTime>, ImmutableSortedSet<FhirDateTime>> PatientGroupDaySubsetActiveDays { get; }
 
         INullableValue<int> NumberBeds { get; }
 

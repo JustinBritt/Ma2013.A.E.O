@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.InterfacesFactories.Contexts.SP
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
@@ -18,7 +17,7 @@
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle surgeonGroups,
             ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
-            ImmutableList<Tuple<INullableValue<int>, FhirDateTime, FhirDateTime>> patientGroupDaySubsetActiveDays,
+            RedBlackTree<Tuple<INullableValue<int>, FhirDateTime>, ImmutableSortedSet<FhirDateTime>> patientGroupDaySubsetActiveDays,
             INullableValue<int> numberBeds,
             INullableValue<int> numberBlocks,
             RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,

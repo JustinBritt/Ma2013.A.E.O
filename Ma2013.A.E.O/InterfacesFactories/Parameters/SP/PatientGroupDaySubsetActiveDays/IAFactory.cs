@@ -2,12 +2,15 @@
 {
     using System.Collections.Immutable;
 
-    using Ma2013.A.E.O.Interfaces.ParameterElements.SP.PatientGroupDaySubsetActiveDays;
+    using NGenerics.DataStructures.Trees;
+
+    using Ma2013.A.E.O.Interfaces.CrossJoinElements.Common;
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.Parameters.SP.PatientGroupDaySubsetActiveDays;
 
     public interface IAFactory
     {
         IA Create(
-            ImmutableList<IAParameterElement> value);
+            RedBlackTree<IpaCrossJoinElement, ImmutableList<IdIndexElement>> value);
     }
 }

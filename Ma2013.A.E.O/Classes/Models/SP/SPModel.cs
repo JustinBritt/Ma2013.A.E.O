@@ -1,5 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Classes.Models.SP
 {
+    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
@@ -120,13 +121,18 @@
             // Parameters
 
             // A(p, d)
+            IPatientGroupDaySubsetActiveDaysVisitor<Tuple<INullableValue<int>, FhirDateTime>, ImmutableSortedSet<FhirDateTime>> patientGroupDaySubsetActiveDaysVisitor = new Ma2013.A.E.O.Visitors.Contexts.SP.PatientGroupDaySubsetActiveDaysVisitor<Tuple<INullableValue<int>, FhirDateTime>, ImmutableSortedSet<FhirDateTime>>(
+                parameterElementsAbstractFactory.CreateAParameterElementFactory(),
+                this.a,
+                this.d,
+                this.p,
+                this.pa);
+
+            this.SPInputContext.PatientGroupDaySubsetActiveDays.AcceptVisitor(
+                patientGroupDaySubsetActiveDaysVisitor);
+
             this.A = parametersAbstractFactory.CreateAFactory().Create(
-                this.SPInputContext.PatientGroupDaySubsetActiveDays
-                .Select(x => parameterElementsAbstractFactory.CreateAParameterElementFactory().Create(
-                    this.p.GetElementAt(x.Item1),
-                    this.d.GetElementAt(x.Item2),
-                    this.a.GetElementAt(x.Item3)))
-                .ToImmutableList());
+                patientGroupDaySubsetActiveDaysVisitor.RedBlackTree);
 
             // BEDS
             this.BEDS = parametersAbstractFactory.CreateBEDSFactory().Create(
