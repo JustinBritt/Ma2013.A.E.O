@@ -70,7 +70,7 @@
             // d
             IDaysVisitor<INullableValue<int>, FhirDateTime> daysVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.DaysVisitor<INullableValue<int>, FhirDateTime>(
                 indexElementsAbstractFactory.CreatedIndexElementFactory(),
-                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+                comparersAbstractFactory.CreateFhirDateTimeComparerFactory().Create());
 
             this.SPInputContext.Days.AcceptVisitor(
                 daysVisitor);
@@ -80,14 +80,14 @@
 
             // p
             this.p = indicesAbstractFactory.CreatepFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
                 this.SPInputContext.PatientGroups
                 .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // s
             this.s = indicesAbstractFactory.CreatesFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
+                comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.SPInputContext.SurgeonGroups
                 .Entry
                 .Where(x => x.Resource is Organization)
@@ -96,7 +96,7 @@
 
             // w
             this.w = indicesAbstractFactory.CreatewFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
+                comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.SPInputContext.Wards
                 .Select(x => x.Item1)
                 .Select(x => indexElementsAbstractFactory.CreatewIndexElementFactory().Create(x))

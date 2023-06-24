@@ -65,7 +65,7 @@
             // a
             IActiveDaysVisitor<INullableValue<int>, FhirDateTime> activeDaysVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.ActiveDaysVisitor<INullableValue<int>, FhirDateTime>(
                 indexElementsAbstractFactory.CreateaIndexElementFactory(),
-                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+                comparersAbstractFactory.CreateFhirDateTimeComparerFactory().Create());
 
             this.TPInputContext.ActiveDays.AcceptVisitor(
                 activeDaysVisitor);
@@ -76,7 +76,7 @@
             // d
             IDaysVisitor<INullableValue<int>, FhirDateTime> daysVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.DaysVisitor<INullableValue<int>, FhirDateTime>(
                 indexElementsAbstractFactory.CreatedIndexElementFactory(),
-                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+                comparersAbstractFactory.CreateFhirDateTimeComparerFactory().Create());
 
             this.TPInputContext.Days.AcceptVisitor(
                 daysVisitor);
@@ -86,28 +86,28 @@
 
             // k
             this.k = indicesAbstractFactory.CreatekFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
                 this.TPInputContext.BlockTypes
                 .Select(x => indexElementsAbstractFactory.CreatekIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // l
             this.l = indicesAbstractFactory.CreatelFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
                 this.TPInputContext.LengthOfStayDays
                 .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // p
             this.p = indicesAbstractFactory.CreatepFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
+                comparersAbstractFactory.CreateNullableValueintComparerFactory().Create(),
                 this.TPInputContext.PatientGroups
                 .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create(x))
                 .ToImmutableList());
 
             // r
             this.r = indicesAbstractFactory.CreaterFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.LocationComparer(),
+                comparersAbstractFactory.CreateLocationComparerFactory().Create(),
                 this.TPInputContext.OperatingRooms
                 .Entry
                 .Where(x => x.Resource is Location)
@@ -116,7 +116,7 @@
 
             // s
             this.s = indicesAbstractFactory.CreatesFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
+                comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.TPInputContext.SurgeonGroups
                 .Entry
                 .Where(x => x.Resource is Organization)
@@ -125,7 +125,7 @@
 
             // w
             this.w = indicesAbstractFactory.CreatewFactory().Create(
-                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
+                comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.TPInputContext.Wards
                 .Select(x => x.Item1)
                 .Select(x => indexElementsAbstractFactory.CreatewIndexElementFactory().Create(x))
