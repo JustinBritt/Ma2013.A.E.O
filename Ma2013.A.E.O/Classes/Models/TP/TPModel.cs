@@ -106,6 +106,7 @@
 
             // r
             this.r = indicesAbstractFactory.CreaterFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.LocationComparer(),
                 this.TPInputContext.OperatingRooms
                 .Entry
                 .Where(x => x.Resource is Location)
@@ -134,7 +135,7 @@
             // ar
             this.ar = crossJoinsAbstractFactory.CreatearFactory().Create(
                 this.a.Value.Values
-                .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatearCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.r.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatearCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // pa
@@ -145,7 +146,7 @@
 
             // rk
             this.rk = crossJoinsAbstractFactory.CreaterkFactory().Create(
-                this.r.Value
+                this.r.Value.Values
                 .SelectMany(b => this.k.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreaterkCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -159,7 +160,7 @@
             this.sark = crossJoinsAbstractFactory.CreatesarkFactory().Create(
                 this.s.Value.Values
                 .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
-                .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, b))
+                .SelectMany(b => this.r.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesarCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, b))
                 .SelectMany(b => this.k.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesarkCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
 
@@ -330,7 +331,7 @@
                     model: this.Model, 
                     indexSet1: this.s.Value.Values, 
                     indexSet2: this.a.Value.Values, 
-                    indexSet3: this.r.Value, 
+                    indexSet3: this.r.Value.Values, 
                     indexSet4: this.k.Value.Values, 
                     lowerBoundGenerator: (a, b, c, d) => 0,
                     upperBoundGenerator: (a, b, c, d) => 1, 
