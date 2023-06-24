@@ -4,11 +4,13 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
     using Ma2013.A.E.O.Interfaces.IndexElements.TP;
 
     public interface Il
     {
-        ImmutableList<IlIndexElement> Value { get; }
+        RedBlackTree<INullableValue<int>, IlIndexElement> Value { get; }
 
         IlIndexElement GetElementAt(
             int value);

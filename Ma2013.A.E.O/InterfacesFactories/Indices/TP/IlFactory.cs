@@ -2,12 +2,14 @@
 {
     using System.Collections.Immutable;
 
+    using Ma2013.A.E.O.Interfaces.Comparers;
     using Ma2013.A.E.O.Interfaces.IndexElements.TP;
     using Ma2013.A.E.O.Interfaces.Indices.TP;
 
     public interface IlFactory
     {
         Il Create(
+            INullableValueintComparer nullableValueintComparer,
             ImmutableList<IlIndexElement> value);
     }
 }

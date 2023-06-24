@@ -92,6 +92,7 @@
 
             // l
             this.l = indicesAbstractFactory.CreatelFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
                 this.TPInputContext.LengthOfStayDays
                 .Select(x => indexElementsAbstractFactory.CreatelIndexElementFactory().Create(x))
                 .ToImmutableList());
