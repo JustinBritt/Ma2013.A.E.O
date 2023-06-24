@@ -2,12 +2,14 @@
 {
     using System.Collections.Immutable;
 
+    using Ma2013.A.E.O.Interfaces.Comparers;
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.Indices.Common;
 
     public interface IpFactory
     {
         Ip Create(
+            INullableValueintComparer nullableValueintComparer,
             ImmutableList<IpIndexElement> value);
     }
 }

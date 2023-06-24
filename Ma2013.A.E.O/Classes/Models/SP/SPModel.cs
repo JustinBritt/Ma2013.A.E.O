@@ -79,6 +79,7 @@
 
             // p
             this.p = indicesAbstractFactory.CreatepFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
                 this.SPInputContext.PatientGroups
                 .Select(x => indexElementsAbstractFactory.CreatepIndexElementFactory().Create(x))
                 .ToImmutableList());
@@ -102,7 +103,7 @@
 
             // pa
             this.pa = crossJoinsAbstractFactory.CreatepaFactory().Create(
-                this.p.Value
+                this.p.Value.Values
                 .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatepaCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -220,7 +221,7 @@
             this.x = variablesAbstractFactory.CreateSPxFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.p.Value,
+                    indexSet1: this.p.Value.Values,
                     indexSet2: this.a.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: null, 
@@ -295,7 +296,7 @@
 
             // Constraints (6L)
             this.Model.AddConstraints(
-                this.p.Value
+                this.p.Value.Values
                 .Select(
                     i => constraintElementsAbstractFactory.CreateConstraints6LConstraintElementFactory().Create(
                         i,
@@ -306,7 +307,7 @@
 
             // Constraints (6U)
             this.Model.AddConstraints(
-                this.p.Value
+                this.p.Value.Values
                 .Select(
                     i => constraintElementsAbstractFactory.CreateConstraints6UConstraintElementFactory().Create(
                         i,

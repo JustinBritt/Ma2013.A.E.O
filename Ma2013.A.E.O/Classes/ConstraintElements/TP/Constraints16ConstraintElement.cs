@@ -32,7 +32,7 @@
             ITPz z)
         {
             Expression LHS = Expression.Sum(
-                p.Value
+                p.Value.Values
                 .Where(
                     i =>
                     P.IsThereElementAt(
