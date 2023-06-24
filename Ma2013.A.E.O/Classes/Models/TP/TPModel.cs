@@ -112,6 +112,7 @@
 
             // s
             this.s = indicesAbstractFactory.CreatesFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
                 this.TPInputContext.SurgeonGroups
                 .Entry
                 .Where(x => x.Resource is Organization)
@@ -147,13 +148,13 @@
 
             // sa
             this.sa = crossJoinsAbstractFactory.CreatesaFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // sark
             this.sark = crossJoinsAbstractFactory.CreatesarkFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, b))
                 .SelectMany(b => this.k.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarkCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, a.rIndexElement, b))
@@ -161,7 +162,7 @@
 
             // sk
             this.sk = crossJoinsAbstractFactory.CreateskFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.k.Value, (a, b) => crossJoinElementsAbstractFactory.CreateskCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -324,7 +325,7 @@
             this.z = variablesAbstractFactory.CreateTPzFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.a.Value.Values, 
                     indexSet3: this.r.Value, 
                     indexSet4: this.k.Value, 

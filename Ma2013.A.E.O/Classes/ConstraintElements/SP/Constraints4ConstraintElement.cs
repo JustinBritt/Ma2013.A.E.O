@@ -23,7 +23,7 @@
             ISPz z)
         {
             Expression LHS = Expression.Sum(
-                s.Value
+                s.Value.Values
                 .Select(
                    i => z.Value[i, aIndexElement]));
 

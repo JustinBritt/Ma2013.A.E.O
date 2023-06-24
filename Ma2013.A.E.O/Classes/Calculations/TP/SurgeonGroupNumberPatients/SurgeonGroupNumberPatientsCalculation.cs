@@ -32,7 +32,7 @@
             ITPx x)
         {
             return surgeonGroupNumberPatientsFactory.Create(
-                s.Value
+                s.Value.Values
                 .Select(w => surgeonGroupNumberPatientsResultElementCalculation.Calculate(
                     surgeonGroupNumberPatientsResultElementFactory,
                     w,

@@ -28,7 +28,7 @@
             ITPz z)
         {
             return surgeonGroupNumberAssignedOperatingRoomsFactory.Create(
-                s.Value
+                s.Value.Values
                 .Select(w => surgeonGroupNumberAssignedOperatingRoomsResultElementCalculation.Calculate(
                     surgeonGroupNumberAssignedOperatingRoomsResultElementFactory,
                     w,

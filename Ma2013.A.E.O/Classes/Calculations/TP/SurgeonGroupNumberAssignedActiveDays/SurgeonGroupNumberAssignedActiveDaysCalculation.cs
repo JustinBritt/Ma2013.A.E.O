@@ -28,7 +28,7 @@
             ITPz z)
         {
             return surgeonGroupNumberAssignedActiveDaysFactory.Create(
-                s.Value
+                s.Value.Values
                 .Select(w => surgeonGroupNumberAssignedActiveDaysResultElementCalculation.Calculate(
                     surgeonGroupNumberAssignedActiveDaysResultElementFactory,
                     w,

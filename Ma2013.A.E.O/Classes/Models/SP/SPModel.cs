@@ -86,6 +86,7 @@
 
             // s
             this.s = indicesAbstractFactory.CreatesFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
                 this.SPInputContext.SurgeonGroups
                 .Entry
                 .Where(x => x.Resource is Organization)
@@ -109,7 +110,7 @@
 
             // sa
             this.sa = crossJoinsAbstractFactory.CreatesaFactory().Create(
-                this.s.Value
+                this.s.Value.Values
                 .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -240,7 +241,7 @@
             this.z = variablesAbstractFactory.CreateSPzFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.s.Value, 
+                    indexSet1: this.s.Value.Values, 
                     indexSet2: this.a.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0,
                     upperBoundGenerator: null, 
