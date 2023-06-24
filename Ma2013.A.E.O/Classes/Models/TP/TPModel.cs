@@ -85,6 +85,7 @@
 
             // k
             this.k = indicesAbstractFactory.CreatekFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer(),
                 this.TPInputContext.BlockTypes
                 .Select(x => indexElementsAbstractFactory.CreatekIndexElementFactory().Create(x))
                 .ToImmutableList());
@@ -144,7 +145,7 @@
             // rk
             this.rk = crossJoinsAbstractFactory.CreaterkFactory().Create(
                 this.r.Value
-                .SelectMany(b => this.k.Value, (a, b) => crossJoinElementsAbstractFactory.CreaterkCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.k.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreaterkCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // sa
@@ -158,13 +159,13 @@
                 this.s.Value.Values
                 .SelectMany(b => this.a.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesaCrossJoinElementFactory().Create(a, b))
                 .SelectMany(b => this.r.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, b))
-                .SelectMany(b => this.k.Value, (a, b) => crossJoinElementsAbstractFactory.CreatesarkCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, a.rIndexElement, b))
+                .SelectMany(b => this.k.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatesarkCrossJoinElementFactory().Create(a.sIndexElement, a.aIndexElement, a.rIndexElement, b))
                 .ToImmutableList());
 
             // sk
             this.sk = crossJoinsAbstractFactory.CreateskFactory().Create(
                 this.s.Value.Values
-                .SelectMany(b => this.k.Value, (a, b) => crossJoinElementsAbstractFactory.CreateskCrossJoinElementFactory().Create(a, b))
+                .SelectMany(b => this.k.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreateskCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
             // wd
@@ -329,7 +330,7 @@
                     indexSet1: this.s.Value.Values, 
                     indexSet2: this.a.Value.Values, 
                     indexSet3: this.r.Value, 
-                    indexSet4: this.k.Value, 
+                    indexSet4: this.k.Value.Values, 
                     lowerBoundGenerator: (a, b, c, d) => 0,
                     upperBoundGenerator: (a, b, c, d) => 1, 
                     variableTypeGenerator: (a, b, c, d) => VariableType.Binary)); 

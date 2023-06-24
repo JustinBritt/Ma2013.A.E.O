@@ -1,11 +1,10 @@
 ﻿namespace Ma2013.A.E.O.Classes.Indices.TP
 {
-    using System.Collections.Immutable;
-    using System.Linq;
-
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.TP;
     using Ma2013.A.E.O.Interfaces.Indices.TP;
@@ -15,19 +14,17 @@
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public k(
-            ImmutableList<IkIndexElement> value)
+            RedBlackTree<INullableValue<int>, IkIndexElement> value)
         {
             this.Value = value;
         }
 
-        public ImmutableList<IkIndexElement> Value { get; }
+        public RedBlackTree<INullableValue<int>, IkIndexElement> Value { get; }
 
         public IkIndexElement GetElementAt(
             INullableValue<int> value)
         {
-            return this.Value
-                .Where(x => x.Value == value)
-                .SingleOrDefault();
+            return this.Value[value];
         }
     }
 }
