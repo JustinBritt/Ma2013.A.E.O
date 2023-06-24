@@ -95,6 +95,7 @@
 
             // w
             this.w = indicesAbstractFactory.CreatewFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
                 this.SPInputContext.Wards
                 .Select(x => x.Item1)
                 .Select(x => indexElementsAbstractFactory.CreatewIndexElementFactory().Create(x))
@@ -116,7 +117,7 @@
 
             // wd
             this.wd = crossJoinsAbstractFactory.CreatewdFactory().Create(
-                this.w.Value
+                this.w.Value.Values
                 .SelectMany(b => this.d.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatewdCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -232,7 +233,7 @@
             this.y = variablesAbstractFactory.CreateSPyFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value,
+                    indexSet1: this.w.Value.Values,
                     lowerBoundGenerator: (a) => 0, 
                     upperBoundGenerator: null, 
                     variableTypeGenerator: (a) => VariableType.Integer)); 

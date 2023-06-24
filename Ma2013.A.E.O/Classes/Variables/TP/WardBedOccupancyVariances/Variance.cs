@@ -37,7 +37,7 @@
             Iw w)
         {
             return VarianceFactory.Create(
-                w.Value
+                w.Value.Values
                 .Select(
                     i => VarianceResultElementFactory.Create(
                         i,

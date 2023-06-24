@@ -21,7 +21,7 @@
             ITPy y)
         {
             Expression LHS = Expression.Sum(
-                w.Value
+                w.Value.Values
                 .Select(
                    i => y.Value[i]));
 

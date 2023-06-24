@@ -50,7 +50,7 @@
             Iw w)
         {
             return yFactory.Create(
-                w.Value
+                w.Value.Values
                 .Select(
                     i => yResultElementFactory.Create(
                         i,

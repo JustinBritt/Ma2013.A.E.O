@@ -121,6 +121,7 @@
 
             // w
             this.w = indicesAbstractFactory.CreatewFactory().Create(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer(),
                 this.TPInputContext.Wards
                 .Select(x => x.Item1)
                 .Select(x => indexElementsAbstractFactory.CreatewIndexElementFactory().Create(x))
@@ -168,7 +169,7 @@
 
             // wd
             this.wd = crossJoinsAbstractFactory.CreatewdFactory().Create(
-                this.w.Value
+                this.w.Value.Values
                 .SelectMany(b => this.d.Value.Values, (a, b) => crossJoinElementsAbstractFactory.CreatewdCrossJoinElementFactory().Create(a, b))
                 .ToImmutableList());
 
@@ -316,7 +317,7 @@
             this.y = variablesAbstractFactory.CreateTPyFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     lowerBoundGenerator: (a) => 0, 
                     upperBoundGenerator: (a) => int.MaxValue, 
                     variableTypeGenerator: (a) => VariableType.Integer)); 
@@ -337,7 +338,7 @@
             this.δMinus = variablesAbstractFactory.CreateδMinusFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => double.MaxValue, 
@@ -347,7 +348,7 @@
             this.δPlus_w = variablesAbstractFactory.CreateδPluswFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     lowerBoundGenerator: (a) => 0, 
                     upperBoundGenerator: (a) => double.MaxValue, 
                     variableTypeGenerator: (a) => VariableType.Continuous));
@@ -356,7 +357,7 @@
             this.δPlus_wd = variablesAbstractFactory.CreateδPluswdFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => double.MaxValue, 
@@ -366,7 +367,7 @@
             this.μ = variablesAbstractFactory.CreateμFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0,
                     upperBoundGenerator: (a, b) => double.MaxValue,
@@ -376,7 +377,7 @@
             this.Variance_w = variablesAbstractFactory.CreateVariancewFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     lowerBoundGenerator: (a) => 0,
                     upperBoundGenerator: (a) => double.MaxValue,
                     variableTypeGenerator: (a) => VariableType.Continuous));
@@ -385,7 +386,7 @@
             this.Variance_wd = variablesAbstractFactory.CreateVariancewdFactory().Create(
                 dependenciesAbstractFactory.CreateVariableCollectionFactory().Create(
                     model: this.Model, 
-                    indexSet1: this.w.Value, 
+                    indexSet1: this.w.Value.Values, 
                     indexSet2: this.d.Value.Values, 
                     lowerBoundGenerator: (a, b) => 0, 
                     upperBoundGenerator: (a, b) => double.MaxValue,

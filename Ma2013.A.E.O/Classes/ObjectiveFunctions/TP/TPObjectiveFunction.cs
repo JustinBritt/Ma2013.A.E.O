@@ -31,7 +31,7 @@
             Interfaces.Variables.TP.WardBedOccupancyVariances.IVariance Variance_w)
         {
             Expression expression = Expression.Sum(
-                w.Value
+                w.Value.Values
                 .Select(
                     i =>
                     (double)α.GetElementAtAsdecimal(

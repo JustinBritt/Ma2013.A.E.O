@@ -37,7 +37,7 @@
             Iw w)
         {
             return δPlusFactory.Create(
-                w.Value
+                w.Value.Values
                 .Select(
                     i => δPlusResultElementFactory.Create(
                         i,

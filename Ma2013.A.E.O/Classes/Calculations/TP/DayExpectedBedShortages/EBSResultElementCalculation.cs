@@ -32,13 +32,13 @@
         {
             int BEDS_d = BEDS.Value.Value.Value;
 
-            double ExpectedValue_d = w.Value
+            double ExpectedValue_d = w.Value.Values
                 .Select(y => (double)μ.GetElementAtAsdecimal(
                     y,
                     dIndexElement))
                 .Sum();
 
-            double Variance_d = w.Value
+            double Variance_d = w.Value.Values
                 .Select(y => (double)Variance.GetElementAtAsdecimal(
                     y,
                     dIndexElement))
