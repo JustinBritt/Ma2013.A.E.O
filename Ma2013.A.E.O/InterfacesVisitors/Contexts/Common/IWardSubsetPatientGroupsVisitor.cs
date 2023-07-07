@@ -1,6 +1,7 @@
 ﻿namespace Ma2013.A.E.O.InterfacesVisitors.Contexts.Common
 {
     using System.Collections.Generic;
+    using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
 
@@ -12,7 +13,7 @@
   
     public interface IWardSubsetPatientGroupsVisitor<TKey, TValue> : IVisitor<KeyValuePair<TKey, TValue>>
         where TKey : Organization
-        where TValue : INullableValue<int>
+        where TValue : IImmutableSet<INullableValue<int>>
     {
         RedBlackTree<IwIndexElement, IPParameterElement> RedBlackTree { get; }
     }

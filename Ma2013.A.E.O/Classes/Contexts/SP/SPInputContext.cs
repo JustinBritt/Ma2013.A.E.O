@@ -28,7 +28,7 @@
             RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientLowerBounds,
             Duration timeBlockLength,
             RedBlackTree<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroups,
-            RedBlackTree<Organization, INullableValue<int>> wardSubsetPatientGroups,
+            RedBlackTree<Organization, ImmutableSortedSet<INullableValue<int>>> wardSubsetPatientGroups,
             RedBlackTree<INullableValue<int>, Money> patientGroupProfits,
             RedBlackTree<INullableValue<int>, INullableValue<int>> patientGroupNumberPatientUpperBounds)
         {
@@ -87,7 +87,7 @@
 
         public RedBlackTree<Organization, INullableValue<int>> SurgeonGroupSubsetPatientGroups { get; }
 
-        public RedBlackTree<Organization, INullableValue<int>> WardSubsetPatientGroups { get; }
+        public RedBlackTree<Organization, ImmutableSortedSet<INullableValue<int>>> WardSubsetPatientGroups { get; }
 
         public RedBlackTree<INullableValue<int>, Money> PatientGroupProfits { get; }
 

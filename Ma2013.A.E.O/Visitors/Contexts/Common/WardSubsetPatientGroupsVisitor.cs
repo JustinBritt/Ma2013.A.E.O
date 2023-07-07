@@ -1,6 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Visitors.Contexts.Common
 {
     using System.Collections.Generic;
+    using System.Collections.Immutable;
 
     using log4net;
 
@@ -16,7 +17,7 @@
 
     internal sealed class WardSubsetPatientGroupsVisitor<TKey, TValue> : IWardSubsetPatientGroupsVisitor<TKey, TValue>
         where TKey : Organization
-        where TValue : INullableValue<int>
+        where TValue : IImmutableSet<INullableValue<int>>
     {
         private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -50,14 +51,17 @@
             IwIndexElement wIndexElement = this.w.GetElementAt(
                 obj.Key);
 
-            IpIndexElement pIndexElement = this.p.GetElementAt(
-                obj.Value);
+            foreach (INullableValue<int> item in obj.Value)
+            {
+                IpIndexElement pIndexElement = this.p.GetElementAt(
+                    item);
 
-            this.RedBlackTree.Add(
-                wIndexElement,
-                this.PParameterElementFactory.Create(
+                this.RedBlackTree.Add(
                     wIndexElement,
-                    pIndexElement));
+                    this.PParameterElementFactory.Create(
+                        wIndexElement,
+                        pIndexElement));
+            }
         }
     }
 }

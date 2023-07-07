@@ -185,7 +185,7 @@
                 surgeonGroupSubsetPatientGroupsVisitor.RedBlackTree);
 
             // P(w)
-            IWardSubsetPatientGroupsVisitor<Organization, INullableValue<int>> wardSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.WardSubsetPatientGroupsVisitor<Organization, INullableValue<int>>(
+            IWardSubsetPatientGroupsVisitor<Organization, ImmutableSortedSet<INullableValue<int>>> wardSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.WardSubsetPatientGroupsVisitor<Organization, ImmutableSortedSet<INullableValue<int>>>(
                 parameterElementsAbstractFactory.CreatePwParameterElementFactory(),
                 this.p,
                 this.w);
