@@ -1,6 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Factories.ParameterElements.Common.SurgeonGroupSubsetPatientGroups
 {
     using System;
+    using System.Collections.Immutable;
 
     using log4net;
 
@@ -19,7 +20,7 @@
 
         public IPParameterElement Create(
             IsIndexElement sIndexElement,
-            IpIndexElement pIndexElement)
+            ImmutableSortedSet<IpIndexElement> value)
         {
             IPParameterElement parameterElement = null;
 
@@ -27,7 +28,7 @@
             {
                 parameterElement = new PParameterElement(
                     sIndexElement,
-                    pIndexElement);
+                    value);
             }
             catch (Exception exception)
             {

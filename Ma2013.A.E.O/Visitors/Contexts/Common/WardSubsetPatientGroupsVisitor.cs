@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Collections.Immutable;
+    using System.Linq;
 
     using log4net;
 
@@ -14,7 +15,7 @@
     using Ma2013.A.E.O.Interfaces.ParameterElements.Common.WardSubsetPatientGroups;
     using Ma2013.A.E.O.InterfacesFactories.ParameterElements.Common.WardSubsetPatientGroups;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.Common;
-
+    
     internal sealed class WardSubsetPatientGroupsVisitor<TKey, TValue> : IWardSubsetPatientGroupsVisitor<TKey, TValue>
         where TKey : Organization
         where TValue : IImmutableSet<INullableValue<int>>
@@ -51,17 +52,11 @@
             IwIndexElement wIndexElement = this.w.GetElementAt(
                 obj.Key);
 
-            foreach (INullableValue<int> patientGroup in obj.Value)
-            {
-                IpIndexElement pIndexElement = this.p.GetElementAt(
-                    patientGroup);
-
-                this.RedBlackTree.Add(
+            this.RedBlackTree.Add(
+                wIndexElement,
+                this.PParameterElementFactory.Create(
                     wIndexElement,
-                    this.PParameterElementFactory.Create(
-                        wIndexElement,
-                        pIndexElement));
-            }
+                    obj.Value.Select(x => this.p.GetElementAt(x)).ToImmutableSortedSet()));
         }
     }
 }

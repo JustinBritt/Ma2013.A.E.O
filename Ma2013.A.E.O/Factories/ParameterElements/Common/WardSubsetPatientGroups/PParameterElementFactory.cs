@@ -1,6 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Factories.ParameterElements.Common.WardSubsetPatientGroups
 {
     using System;
+    using System.Collections.Immutable;
 
     using log4net;
 
@@ -19,7 +20,7 @@
 
         public IPParameterElement Create(
             IwIndexElement wIndexElement,
-            IpIndexElement pIndexElement)
+            ImmutableSortedSet<IpIndexElement> value)
         {
             IPParameterElement parameterElement = null;
 
@@ -27,7 +28,7 @@
             {
                 parameterElement = new PParameterElement(
                     wIndexElement,
-                    pIndexElement);
+                    value);
             }
             catch (Exception exception)
             {

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Collections.Immutable;
+    using System.Linq;
 
     using log4net;
 
@@ -51,17 +52,11 @@
             IsIndexElement sIndexElement = this.s.GetElementAt(
                 obj.Key);
 
-            foreach (INullableValue<int> patientGroup in obj.Value)
-            {
-                IpIndexElement pIndexElement = this.p.GetElementAt(
-                    patientGroup);
-
-                this.RedBlackTree.Add(
+            this.RedBlackTree.Add(
+                sIndexElement,
+                this.PParameterElementFactory.Create(
                     sIndexElement,
-                    this.PParameterElementFactory.Create(
-                        sIndexElement,
-                        pIndexElement));
-            }
+                    obj.Value.Select(w => this.p.GetElementAt(w)).ToImmutableSortedSet()));
         }
     }
 }

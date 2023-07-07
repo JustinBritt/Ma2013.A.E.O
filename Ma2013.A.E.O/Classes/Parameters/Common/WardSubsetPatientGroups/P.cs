@@ -27,7 +27,7 @@
             IpIndexElement pIndexElement)
         {
             int count = this.Value.Values
-                .Where(x => x.wIndexElement == wIndexElement && x.pIndexElement == pIndexElement)
+                .Where(x => x.wIndexElement == wIndexElement && x.Value.Contains(pIndexElement))
                 .Distinct()
                 .Count();
 

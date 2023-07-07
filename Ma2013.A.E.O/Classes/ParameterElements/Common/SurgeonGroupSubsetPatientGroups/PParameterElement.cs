@@ -1,5 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Classes.ParameterElements.Common.SurgeonGroupSubsetPatientGroups
 {
+    using System.Collections.Immutable;
+
     using log4net;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
@@ -11,15 +13,15 @@
 
         public PParameterElement(
             IsIndexElement sIndexElement,
-            IpIndexElement pIndexElement)
+            ImmutableSortedSet<IpIndexElement> value)
         {
             this.sIndexElement = sIndexElement;
 
-            this.pIndexElement = pIndexElement;
+            this.Value = value;
         }
 
         public IsIndexElement sIndexElement { get; }
 
-        public IpIndexElement pIndexElement { get; }
+        public ImmutableSortedSet<IpIndexElement> Value { get; }
     }
 }
