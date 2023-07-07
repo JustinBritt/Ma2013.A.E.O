@@ -51,10 +51,10 @@
             IwIndexElement wIndexElement = this.w.GetElementAt(
                 obj.Key);
 
-            foreach (INullableValue<int> item in obj.Value)
+            foreach (INullableValue<int> patientGroup in obj.Value)
             {
                 IpIndexElement pIndexElement = this.p.GetElementAt(
-                    item);
+                    patientGroup);
 
                 this.RedBlackTree.Add(
                     wIndexElement,

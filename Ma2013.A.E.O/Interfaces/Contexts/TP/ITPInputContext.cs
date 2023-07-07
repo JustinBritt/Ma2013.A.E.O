@@ -32,7 +32,7 @@
 
         RedBlackTree<FhirDateTime, RedBlackTree<Location, Duration>> DayOperatingRoomOperatingCapacities { get; }
 
-        RedBlackTree<Organization, INullableValue<int>> SurgeonGroupSubsetPatientGroups { get; }
+        RedBlackTree<Organization, ImmutableSortedSet<INullableValue<int>>> SurgeonGroupSubsetPatientGroups { get; }
 
         RedBlackTree<Organization, ImmutableSortedSet<INullableValue<int>>> WardSubsetPatientGroups { get; }
 

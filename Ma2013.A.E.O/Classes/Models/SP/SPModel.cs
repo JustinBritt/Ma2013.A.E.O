@@ -173,7 +173,7 @@
                 this.SPInputContext.TimeBlockLength);
 
             // P(s)
-            ISurgeonGroupSubsetPatientGroupsVisitor<Organization, INullableValue<int>> surgeonGroupSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.SurgeonGroupSubsetPatientGroupsVisitor<Organization, INullableValue<int>>(
+            ISurgeonGroupSubsetPatientGroupsVisitor<Organization, ImmutableSortedSet<INullableValue<int>>> surgeonGroupSubsetPatientGroupsVisitor = new Ma2013.A.E.O.Visitors.Contexts.Common.SurgeonGroupSubsetPatientGroupsVisitor<Organization, ImmutableSortedSet<INullableValue<int>>>(
                 parameterElementsAbstractFactory.CreatePsParameterElementFactory(),
                 this.p,
                 this.s);

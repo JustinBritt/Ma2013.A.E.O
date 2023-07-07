@@ -31,7 +31,7 @@
 
         Duration TimeBlockLength { get; }
 
-        RedBlackTree<Organization, INullableValue<int>> SurgeonGroupSubsetPatientGroups { get; }
+        RedBlackTree<Organization, ImmutableSortedSet<INullableValue<int>>> SurgeonGroupSubsetPatientGroups { get; }
 
         RedBlackTree<Organization, ImmutableSortedSet<INullableValue<int>>> WardSubsetPatientGroups { get; }
 
