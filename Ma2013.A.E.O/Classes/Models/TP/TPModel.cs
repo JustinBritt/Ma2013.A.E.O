@@ -127,7 +127,7 @@
             this.w = indicesAbstractFactory.CreatewFactory().Create(
                 comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.TPInputContext.Wards
-                .Select(x => x.Item1)
+                .Select(x => x.Key)
                 .Select(x => indexElementsAbstractFactory.CreatewIndexElementFactory().Create(x))
                 .ToImmutableList());
 
@@ -268,8 +268,8 @@
             this.W = parametersAbstractFactory.CreateWFactory().Create(
                 this.TPInputContext.Wards
                 .Select(x => parameterElementsAbstractFactory.CreateWParameterElementFactory().Create(
-                    this.w.GetElementAt(x.Item1),
-                    x.Item2.Select(i => this.s.GetElementAt(i)).ToImmutableList()))
+                    this.w.GetElementAt(x.Key),
+                    x.Value.Select(i => this.s.GetElementAt(i)).ToImmutableList()))
                 .ToImmutableList());
 
             // α(w)

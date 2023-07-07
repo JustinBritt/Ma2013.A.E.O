@@ -22,7 +22,7 @@
 
         Bundle SurgeonGroups { get; }
 
-        ImmutableList<Tuple<Organization, ImmutableList<Organization>>> Wards { get; }
+        RedBlackTree<Organization, ImmutableSortedSet<Organization>> Wards { get; }
 
         INullableValue<int> NumberBeds { get; }
 

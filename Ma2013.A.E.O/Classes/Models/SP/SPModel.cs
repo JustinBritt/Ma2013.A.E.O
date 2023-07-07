@@ -98,7 +98,7 @@
             this.w = indicesAbstractFactory.CreatewFactory().Create(
                 comparersAbstractFactory.CreateOrganizationComparerFactory().Create(),
                 this.SPInputContext.Wards
-                .Select(x => x.Item1)
+                .Select(x => x.Key)
                 .Select(x => indexElementsAbstractFactory.CreatewIndexElementFactory().Create(x))
                 .ToImmutableList());
 

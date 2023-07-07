@@ -17,7 +17,7 @@
 
         Bundle SurgeonGroups { get; }
 
-        ImmutableList<Tuple<Organization, ImmutableList<Organization>>> Wards { get; }
+        RedBlackTree<Organization, ImmutableSortedSet<Organization>> Wards { get; }
 
         RedBlackTree<Tuple<INullableValue<int>, FhirDateTime>, ImmutableSortedSet<FhirDateTime>> PatientGroupDaySubsetActiveDays { get; }
 

@@ -26,7 +26,7 @@
             RedBlackTree<INullableValue<int>, FhirDateTime> days,
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle surgeonGroups,
-            ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
+            RedBlackTree<Organization, ImmutableSortedSet<Organization>> wards,
             RedBlackTree<Tuple<INullableValue<int>, FhirDateTime>, ImmutableSortedSet<FhirDateTime>> patientGroupDaySubsetActiveDays,
             INullableValue<int> numberBeds,
             INullableValue<int> numberBlocks,

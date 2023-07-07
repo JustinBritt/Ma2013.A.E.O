@@ -23,7 +23,7 @@
             ImmutableSortedSet<INullableValue<int>> patientGroups,
             Bundle operatingRooms,
             Bundle surgeonGroups,
-            ImmutableList<Tuple<Organization, ImmutableList<Organization>>> wards,
+            RedBlackTree<Organization, ImmutableSortedSet<Organization>> wards,
             INullableValue<int> numberBeds,
             RedBlackTree<INullableValue<int>, Duration> patientGroupSurgeryDurations,
             RedBlackTree<INullableValue<int>, Duration> blockTypeTimeBlockLengths,
@@ -89,7 +89,7 @@
 
         public Bundle SurgeonGroups { get; }
 
-        public ImmutableList<Tuple<Organization, ImmutableList<Organization>>> Wards { get; }
+        public RedBlackTree<Organization, ImmutableSortedSet<Organization>> Wards { get; }
 
         public INullableValue<int> NumberBeds { get; }
 
