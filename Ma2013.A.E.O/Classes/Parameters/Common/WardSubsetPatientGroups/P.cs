@@ -26,19 +26,7 @@
             IwIndexElement wIndexElement,
             IpIndexElement pIndexElement)
         {
-            int count = this.Value.Values
-                .Where(x => x.wIndexElement == wIndexElement && x.Value.Contains(pIndexElement))
-                .Distinct()
-                .Count();
-
-            if (count == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return this.Value[wIndexElement].Value.Contains(pIndexElement);
         }
     }
 }
