@@ -1,19 +1,18 @@
 ﻿namespace Ma2013.A.E.O.Classes.ConstraintElements.TP
 {
-    using System;
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using OPTANO.Modeling.Optimization;
 
     using Ma2013.A.E.O.Interfaces.ConstraintElements.TP;
-    using Ma2013.A.E.O.Interfaces.CrossJoins.Common;
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.Indices.Common;
     using Ma2013.A.E.O.Interfaces.Indices.TP;
-    using Ma2013.A.E.O.Interfaces.Parameters.Common.WardSubsetPatientGroups;
+    using Ma2013.A.E.O.Interfaces.Parameters.Common.WardPatientGroupActiveDays;
     using Ma2013.A.E.O.Interfaces.Parameters.TP.PatientGroupDayLengthOfStayProbabilities;
     using Ma2013.A.E.O.Interfaces.Variables.TP.PatientGroupActiveDayNumberPatients;
     using Ma2013.A.E.O.Interfaces.Variables.TP.WardDayBedRequirementVariances;
@@ -27,19 +26,20 @@
             IwIndexElement wIndexElement,
             Id d,
             Il l,
-            Ipa pa,
-            IP P,
             Iprob prob,
+            Iwpa wpa,
             ITPx x,
             IVariance Variance)
         {
             Expression LHS = Variance.Value[wIndexElement, dIndexElement];
 
-            ImmutableList<Tuple<IpIndexElement, IaIndexElement, double>>.Builder builder = ImmutableList.CreateBuilder<Tuple<IpIndexElement, IaIndexElement, double>>();
+            RedBlackTree<IpIndexElement, RedBlackTree<IaIndexElement, double>> outerRedBlackTree = new RedBlackTree<IpIndexElement, RedBlackTree<IaIndexElement, double>>();
 
-            foreach (IpIndexElement pIndexElement in pa.Value.Where(i => P.IsThereElementAt(wIndexElement, i.pIndexElement)).Select(w => w.pIndexElement).Distinct())
+            foreach (IpIndexElement pIndexElement in wpa.Value[wIndexElement].Keys)
             {
-                foreach (IaIndexElement aIndexElement in pa.Value.Select(w => w.aIndexElement).Distinct())
+                RedBlackTree<IaIndexElement, double> innerRedBlackTree = new RedBlackTree<IaIndexElement, double>();
+
+                foreach (IaIndexElement aIndexElement in wpa.Value[wIndexElement][pIndexElement].Keys)
                 {
                     int dLowerBound = aIndexElement.Key <= dIndexElement.Key ? dIndexElement.Key - aIndexElement.Key : d.GetMaximumKey() + dIndexElement.Key - aIndexElement.Key;
 
@@ -61,22 +61,21 @@
                                     w)));
                     }
 
-                    builder.Add(
-                        Tuple.Create(
-                            pIndexElement,
-                            aIndexElement,
-                            RHSSum));
+                    innerRedBlackTree.Add(
+                        aIndexElement,
+                        RHSSum);
                 }
+
+                outerRedBlackTree.Add(
+                    pIndexElement,
+                    innerRedBlackTree);
             }
 
-            ImmutableList<Tuple<IpIndexElement, IaIndexElement, double>> RHSSums = builder.ToImmutableList();
-
             Expression RHS = Expression.Sum(
-                pa.Value
-                .Where(i => P.IsThereElementAt(wIndexElement, i.pIndexElement))
+                wpa.Value[wIndexElement].Values.SelectMany(w => w.Values)
                 .Select(
                     y =>
-                    RHSSums.Where(w => w.Item1 == y.pIndexElement && w.Item2 == y.aIndexElement).Select(w => w.Item3).SingleOrDefault()
+                    outerRedBlackTree[y.pIndexElement][y.aIndexElement]
                     *
                     x.Value[
                         y.pIndexElement,
