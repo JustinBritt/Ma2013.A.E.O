@@ -4,6 +4,7 @@
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.SurgeonGroupSubsetPatientGroups;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.SurgicalSpecialties;
+    using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.WardPatientGroupActiveDays;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.WardSubsetPatientGroups;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.NumberBlocks;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.PatientGroupDaySubsetActiveDays;
@@ -47,6 +48,8 @@
         IUBFactory CreateUBFactory();
 
         IWFactory CreateWFactory();
+
+        IwpaFactory CreatewpaFactory();
 
         IαFactory CreateαFactory();
 

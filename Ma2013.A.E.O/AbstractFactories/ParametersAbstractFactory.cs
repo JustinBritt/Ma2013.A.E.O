@@ -8,6 +8,7 @@
     using Ma2013.A.E.O.Factories.Parameters.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.Factories.Parameters.Common.SurgeonGroupSubsetPatientGroups;
     using Ma2013.A.E.O.Factories.Parameters.Common.SurgicalSpecialties;
+    using Ma2013.A.E.O.Factories.Parameters.Common.WardPatientGroupActiveDays;
     using Ma2013.A.E.O.Factories.Parameters.Common.WardSubsetPatientGroups;
     using Ma2013.A.E.O.Factories.Parameters.SP.NumberBlocks;
     using Ma2013.A.E.O.Factories.Parameters.SP.PatientGroupDaySubsetActiveDays;
@@ -24,6 +25,7 @@
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.SurgeonGroupSubsetPatientGroups;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.SurgicalSpecialties;
+    using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.WardPatientGroupActiveDays;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.Common.WardSubsetPatientGroups;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.NumberBlocks;
     using Ma2013.A.E.O.InterfacesFactories.Parameters.SP.PatientGroupDaySubsetActiveDays;
@@ -303,6 +305,24 @@
             try
             {
                 factory = new WFactory();
+            }
+            catch (Exception exception)
+            {
+                this.Log.Error(
+                    exception.Message,
+                    exception);
+            }
+
+            return factory;
+        }
+
+        public IwpaFactory CreatewpaFactory()
+        {
+            IwpaFactory factory = null;
+
+            try
+            {
+                factory = new wpaFactory();
             }
             catch (Exception exception)
             {
