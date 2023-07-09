@@ -6,6 +6,8 @@
 
     using log4net;
 
+    using NGenerics.DataStructures.Trees;
+
     using OPTANO.Modeling.Optimization;
 
     using Ma2013.A.E.O.Interfaces.ConstraintElements.TP;
@@ -37,10 +39,12 @@
         {
             Expression LHS = μ.Value[wIndexElement, dIndexElement];
 
-            ImmutableList<Tuple<IpIndexElement, IaIndexElement, double>>.Builder builder = ImmutableList.CreateBuilder<Tuple<IpIndexElement, IaIndexElement, double>>();
+            RedBlackTree<IpIndexElement, RedBlackTree<IaIndexElement, double>> outerRedBlackTree = new RedBlackTree<IpIndexElement, RedBlackTree<IaIndexElement, double>>();
 
             foreach (IpIndexElement pIndexElement in wpa.Value[wIndexElement].Keys)
             {
+                RedBlackTree<IaIndexElement, double> innerRedBlackTree = new RedBlackTree<IaIndexElement, double>();
+
                 foreach (IaIndexElement aIndexElement in wpa.Value[wIndexElement][pIndexElement].Keys)
                 {
                     int dLowerBound = aIndexElement.Key <= dIndexElement.Key ? dIndexElement.Key - aIndexElement.Key : d.GetMaximumKey() + dIndexElement.Key - aIndexElement.Key;
@@ -58,21 +62,21 @@
                                     w));
                     }
 
-                    builder.Add(
-                        Tuple.Create(
-                            pIndexElement,
-                            aIndexElement,
-                            RHSSum));
+                    innerRedBlackTree.Add(
+                        aIndexElement,
+                        RHSSum);
                 }
-            }
 
-            ImmutableList<Tuple<IpIndexElement, IaIndexElement, double>> RHSSums = builder.ToImmutableList();
+                outerRedBlackTree.Add(
+                    pIndexElement,
+                    innerRedBlackTree);
+            }
 
             Expression RHS = Expression.Sum(
                 wpa.Value[wIndexElement].Values.SelectMany(w => w.Values)
                 .Select(
                     y =>
-                    RHSSums.Where(w => w.Item1 == y.pIndexElement && w.Item2 == y.aIndexElement).Select(w => w.Item3).SingleOrDefault()
+                    outerRedBlackTree[y.pIndexElement][y.aIndexElement]
                     *
                     x.Value[
                         y.pIndexElement,
