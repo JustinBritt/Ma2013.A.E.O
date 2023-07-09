@@ -1,5 +1,7 @@
 ﻿namespace Ma2013.A.E.O.Classes.Parameters.Common.WardPatientGroupActiveDays
 {
+    using log4net;
+
     using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.CrossJoinElements.Common;
@@ -8,6 +10,8 @@
 
     internal sealed class wpa : Iwpa
     {
+        private ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public wpa(
             RedBlackTree<IwIndexElement, RedBlackTree<IpIndexElement, RedBlackTree<IaIndexElement, IpaCrossJoinElement>>> value)
         {
