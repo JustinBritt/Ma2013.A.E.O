@@ -436,8 +436,6 @@
                         i.wIndexElement,
                         this.d,
                         this.l,
-                        this.pa,
-                        this.Pw,
                         this.prob,
                         this.wpa,
                         this.x,
