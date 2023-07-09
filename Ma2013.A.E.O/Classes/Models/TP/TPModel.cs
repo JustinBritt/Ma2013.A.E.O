@@ -439,6 +439,7 @@
                         this.pa,
                         this.Pw,
                         this.prob,
+                        this.wpa,
                         this.x,
                         this.μ)
                     .Value));
