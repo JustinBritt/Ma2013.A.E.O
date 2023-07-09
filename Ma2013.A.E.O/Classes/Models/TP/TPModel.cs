@@ -36,6 +36,7 @@
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.TP;
     using Ma2013.A.E.O.Visitors.Contexts.TP;
     using NGenerics.DataStructures.Trees;
+    using Ma2013.A.E.O.Interfaces.Parameters.Common.WardPatientGroupActiveDays;
 
     internal sealed class TPModel : ITPModel
     {
@@ -271,6 +272,15 @@
                     this.w.GetElementAt(x.Key),
                     x.Value.Select(i => this.s.GetElementAt(i)).ToImmutableList()))
                 .ToImmutableList());
+
+            // wpa
+            this.wpa = parametersAbstractFactory.CreatewpaFactory().Create(
+                this.a,
+                this.p,
+                this.w,
+                this.pa,
+                this.Pw,
+                this.W);
 
             // α(w)
             IWardαVisitor<Organization, INullableValue<decimal>> wardαVisitor = new Ma2013.A.E.O.Visitors.Contexts.TP.WardαVisitor<Organization, INullableValue<decimal>>(
@@ -620,6 +630,8 @@
         public ITHR THR { get; }
 
         public IW W { get; }
+
+        private Iwpa wpa { get; }
 
         public Iα α { get; }
 
