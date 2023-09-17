@@ -297,7 +297,7 @@
 
         public INullableValue<decimal> BestBound { get; }
 
-        public ImmutableList<Tuple<FhirDateTime, INullableValue<decimal>>> DayBedRequirementMeans { get; }
+        public RedBlackTree<FhirDateTime, INullableValue<decimal>> DayBedRequirementMeans { get; }
 
         public ImmutableList<Tuple<FhirDateTime, INullableValue<decimal>>> DayBedRequirementVariances { get; }
 
