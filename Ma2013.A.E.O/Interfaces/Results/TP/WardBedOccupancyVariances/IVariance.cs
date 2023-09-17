@@ -1,9 +1,10 @@
 ﻿namespace Ma2013.A.E.O.Interfaces.Results.TP.WardBedOccupancyVariances
 {
-    using System;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.TP.WardBedOccupancyVariances;
@@ -16,7 +17,7 @@
         decimal GetElementAtAsdecimal(
             IwIndexElement wIndexElement);
 
-        ImmutableList<Tuple<Organization, INullableValue<decimal>>> GetValueForOutputContext(
+        RedBlackTree<Organization, INullableValue<decimal>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory);
     }
 }

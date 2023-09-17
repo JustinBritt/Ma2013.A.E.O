@@ -1,12 +1,13 @@
 ﻿namespace Ma2013.A.E.O.Classes.Results.TP.WardBedOccupancyVariances
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.TP.WardBedOccupancyVariances;
@@ -34,16 +35,21 @@
                 .SingleOrDefault();
         }
 
-        public ImmutableList<Tuple<Organization, INullableValue<decimal>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, INullableValue<decimal>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.wIndexElement.Value,
+            RedBlackTree<Organization, INullableValue<decimal>> redBlackTree = new RedBlackTree<Organization, INullableValue<decimal>>(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (IVarianceResultElement varianceResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    varianceResultElement.wIndexElement.Value,
                     nullableValueFactory.Create<decimal>(
-                        i.Value)))
-                .ToImmutableList();
+                        varianceResultElement.Value));
+            }
+
+            return redBlackTree;
         }
     }
 }
