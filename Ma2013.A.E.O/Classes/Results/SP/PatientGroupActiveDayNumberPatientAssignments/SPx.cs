@@ -8,6 +8,7 @@
 
     using Hl7.Fhir.Model;
 
+    using Ma2013.A.E.O.Interfaces.Indices.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.SP.PatientGroupActiveDayNumberPatientAssignments;
     using Ma2013.A.E.O.Interfaces.Results.SP.PatientGroupActiveDayNumberPatientAssignments;
     using Ma2013.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
@@ -25,7 +26,9 @@
         public ImmutableList<ISPxResultElement> Value { get; }
 
         public ImmutableList<Tuple<INullableValue<int>, FhirDateTime, INullableValue<int>>> GetValueForOutputContext(
-            INullableValueFactory nullableValueFactory)
+            INullableValueFactory nullableValueFactory,
+            Ia a,
+            Ip p)
         {
             return this.Value
                 .Select(

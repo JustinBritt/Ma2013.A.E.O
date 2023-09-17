@@ -73,7 +73,9 @@
                 resultsAbstractFactory.CreateSPxFactory(),
                 SPModel.pa)
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                SPModel.a,
+                SPModel.p);
 
             // y(w)
             this.WardNumberBedAssignments = SPModel.y.GetElementsAt(

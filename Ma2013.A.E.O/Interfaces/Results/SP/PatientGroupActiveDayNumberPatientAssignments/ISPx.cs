@@ -5,6 +5,7 @@
 
     using Hl7.Fhir.Model;
 
+    using Ma2013.A.E.O.Interfaces.Indices.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.SP.PatientGroupActiveDayNumberPatientAssignments;
     using Ma2013.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
 
@@ -13,6 +14,8 @@
         ImmutableList<ISPxResultElement> Value { get; }
 
         ImmutableList<Tuple<INullableValue<int>, FhirDateTime, INullableValue<int>>> GetValueForOutputContext(
-            INullableValueFactory nullableValueFactory);
+            INullableValueFactory nullableValueFactory,
+            Ia a,
+            Ip p);
     }
 }
