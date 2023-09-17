@@ -16,6 +16,10 @@
         /// </summary>
         Model Model { get; }
 
+        Ia a { get; }
+
+        Ip p { get; }
+
         Iw w { get; }
 
         Ipa pa { get; }
