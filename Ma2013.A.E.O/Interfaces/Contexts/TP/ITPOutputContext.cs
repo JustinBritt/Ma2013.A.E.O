@@ -55,7 +55,7 @@
 
         ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> WardDayBedAvailabilityMinusDeviations { get; }
 
-        ImmutableList<Tuple<Organization, INullableValue<decimal>>> WardSpareBeds { get; }
+        RedBlackTree<Organization, INullableValue<decimal>> WardSpareBeds { get; }
 
         ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> WardDayBedAvailabilityPlusDeviations { get; }
 
