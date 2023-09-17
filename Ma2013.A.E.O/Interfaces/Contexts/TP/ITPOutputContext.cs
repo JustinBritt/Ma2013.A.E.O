@@ -30,7 +30,7 @@
 
         RedBlackTree<Organization, INullableValue<int>> SurgeonGroupNumberAssignedOperatingRooms { get; }
 
-        ImmutableList<Tuple<Organization, INullableValue<int>>> SurgeonGroupNumberAssignedActiveDays { get; }
+        RedBlackTree<Organization, INullableValue<int>> SurgeonGroupNumberAssignedActiveDays { get; }
 
         ImmutableList<Tuple<Organization, INullableValue<int>>> SurgeonGroupNumberPatients { get; }
 
