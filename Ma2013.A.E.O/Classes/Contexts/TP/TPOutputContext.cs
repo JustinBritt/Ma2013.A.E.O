@@ -301,7 +301,7 @@
 
         public RedBlackTree<FhirDateTime, INullableValue<decimal>> DayBedRequirementVariances { get; }
 
-        public ImmutableList<Tuple<FhirDateTime, INullableValue<decimal>>> DayExpectedBedShortages { get; }
+        public RedBlackTree<FhirDateTime, INullableValue<decimal>> DayExpectedBedShortages { get; }
 
         public INullableValue<decimal> Gap { get; }
 

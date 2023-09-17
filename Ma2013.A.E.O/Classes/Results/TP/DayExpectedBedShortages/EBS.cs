@@ -1,12 +1,13 @@
 ﻿namespace Ma2013.A.E.O.Classes.Results.TP.DayExpectedBedShortages
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.TP.DayExpectedBedShortages;
@@ -34,16 +35,20 @@
                 .SingleOrDefault();
         }
 
-        public ImmutableList<Tuple<FhirDateTime, INullableValue<decimal>>> GetValueForOutputContext(
+        public RedBlackTree<FhirDateTime, INullableValue<decimal>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                    i => Tuple.Create(
-                        i.dIndexElement.Value,
-                        nullableValueFactory.Create<decimal>(
-                            i.Value)))
-                .ToImmutableList();
+            RedBlackTree<FhirDateTime, INullableValue<decimal>> redBlackTree = new RedBlackTree<FhirDateTime, INullableValue<decimal>>();
+
+            foreach (IEBSResultElement EBSResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    EBSResultElement.dIndexElement.Value,
+                    nullableValueFactory.Create<decimal>(
+                        EBSResultElement.Value));
+            }
+
+            return redBlackTree;
         }
     }
 }
