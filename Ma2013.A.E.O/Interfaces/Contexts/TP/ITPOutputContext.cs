@@ -46,7 +46,7 @@
 
         RedBlackTree<Organization, INullableValue<int>> WardNumberAssignedOperatingRooms { get; }
 
-        ImmutableList<Tuple<Organization, INullableValue<int>>> WardNumberAssignedActiveDays { get; }
+        RedBlackTree<Organization, INullableValue<int>> WardNumberAssignedActiveDays { get; }
 
         ImmutableList<Tuple<INullableValue<int>, FhirDateTime, INullableValue<int>>> PatientGroupActiveDayNumberPatientAssignments { get; }
 

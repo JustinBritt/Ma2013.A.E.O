@@ -1,12 +1,12 @@
 ﻿namespace Ma2013.A.E.O.Classes.Results.TP.WardNumberAssignedActiveDays
 {
-    using System;
     using System.Collections.Immutable;
-    using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.ResultElements.TP.WardNumberAssignedActiveDays;
     using Ma2013.A.E.O.Interfaces.Results.TP.WardNumberAssignedActiveDays;
@@ -24,16 +24,21 @@
 
         public ImmutableList<IWardNumberAssignedActiveDaysResultElement> Value { get; }
 
-        public ImmutableList<Tuple<Organization, INullableValue<int>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, INullableValue<int>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.wIndexElement.Value,
+            RedBlackTree<Organization, INullableValue<int>> redBlackTree = new RedBlackTree<Organization, INullableValue<int>>(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (IWardNumberAssignedActiveDaysResultElement wardNumberAssignedActiveDaysResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    wardNumberAssignedActiveDaysResultElement.wIndexElement.Value,
                     nullableValueFactory.Create<int>(
-                        i.Value)))
-                .ToImmutableList();
+                        wardNumberAssignedActiveDaysResultElement.Value));
+            }
+
+            return redBlackTree;
         }
     }
 }
