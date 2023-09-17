@@ -329,7 +329,7 @@
 
         public INullableValue<decimal> UtilizedTime { get; }
 
-        public ImmutableList<Tuple<Organization, INullableValue<int>>> WardNumberAssignedOperatingRooms { get; }
+        public RedBlackTree<Organization, INullableValue<int>> WardNumberAssignedOperatingRooms { get; }
 
         public ImmutableList<Tuple<Organization, INullableValue<int>>> WardNumberAssignedActiveDays { get; }
 
