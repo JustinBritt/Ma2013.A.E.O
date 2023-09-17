@@ -14,7 +14,7 @@
 
         RedBlackTree<FhirDateTime, INullableValue<decimal>> DayBedRequirementMeans { get; }
 
-        ImmutableList<Tuple<FhirDateTime, INullableValue<decimal>>> DayBedRequirementVariances { get; }
+        RedBlackTree<FhirDateTime, INullableValue<decimal>> DayBedRequirementVariances { get; }
 
         ImmutableList<Tuple<FhirDateTime, INullableValue<decimal>>> DayExpectedBedShortages { get; }
 
