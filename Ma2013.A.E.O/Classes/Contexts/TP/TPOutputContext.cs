@@ -313,7 +313,7 @@
 
         public TimeSpan OverallWallTime { get; }
 
-        public ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgeonGroupNumberAssignedOperatingRooms { get; }
+        public RedBlackTree<Organization, INullableValue<int>> SurgeonGroupNumberAssignedOperatingRooms { get; }
 
         public ImmutableList<Tuple<Organization, INullableValue<int>>> SurgeonGroupNumberAssignedActiveDays { get; }
 

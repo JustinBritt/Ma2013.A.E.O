@@ -28,7 +28,7 @@
 
         TimeSpan OverallWallTime { get; }
 
-        ImmutableList<KeyValuePair<Organization, INullableValue<int>>> SurgeonGroupNumberAssignedOperatingRooms { get; }
+        RedBlackTree<Organization, INullableValue<int>> SurgeonGroupNumberAssignedOperatingRooms { get; }
 
         ImmutableList<Tuple<Organization, INullableValue<int>>> SurgeonGroupNumberAssignedActiveDays { get; }
 
