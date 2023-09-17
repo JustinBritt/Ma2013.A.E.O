@@ -38,7 +38,8 @@
         public RedBlackTree<FhirDateTime, INullableValue<decimal>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            RedBlackTree<FhirDateTime, INullableValue<decimal>> redBlackTree = new RedBlackTree<FhirDateTime, INullableValue<decimal>>();
+            RedBlackTree<FhirDateTime, INullableValue<decimal>> redBlackTree = new RedBlackTree<FhirDateTime, INullableValue<decimal>>(
+                new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
 
             foreach (IDayBedRequirementVariancesResultElement dayBedRequirementVariancesResultElement in this.Value)
             {
