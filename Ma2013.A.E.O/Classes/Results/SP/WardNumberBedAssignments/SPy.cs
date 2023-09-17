@@ -1,12 +1,12 @@
 ﻿namespace Ma2013.A.E.O.Classes.Results.SP.WardNumberBedAssignments
 {
-    using System.Collections.Generic;
     using System.Collections.Immutable;
-    using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.ResultElements.SP.WardNumberBedAssignments;
     using Ma2013.A.E.O.Interfaces.Results.SP.WardNumberBedAssignments;
@@ -24,16 +24,21 @@
 
         public ImmutableList<ISPyResultElement> Value { get; }
 
-        public ImmutableList<KeyValuePair<Organization, INullableValue<int>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, INullableValue<int>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory)
         {
-            return this.Value
-                .Select(
-                i => KeyValuePair.Create(
-                    i.wIndexElement.Value,
+            RedBlackTree<Organization, INullableValue<int>> redBlackTree = new RedBlackTree<Organization, INullableValue<int>>(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (ISPyResultElement SPyResultElement in this.Value)
+            {
+                redBlackTree.Add(
+                    SPyResultElement.wIndexElement.Value,
                     nullableValueFactory.Create<int>(
-                        i.Value)))
-                .ToImmutableList();
+                        SPyResultElement.Value));
+            }
+
+            return redBlackTree;
         }
     }
 }
