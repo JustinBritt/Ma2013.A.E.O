@@ -5,6 +5,7 @@
     using Ma2013.A.E.O.Interfaces.CrossJoins.Common;
     using Ma2013.A.E.O.Interfaces.CrossJoins.TP;
     using Ma2013.A.E.O.Interfaces.Indices.Common;
+    using Ma2013.A.E.O.Interfaces.Indices.TP;
     using Ma2013.A.E.O.Interfaces.Parameters.Common.NumberBeds;
     using Ma2013.A.E.O.Interfaces.Parameters.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.Interfaces.Parameters.Common.SurgicalSpecialties;
@@ -28,6 +29,8 @@
         Id d { get; }
 
         Ip p { get; }
+
+        Ir r { get; }
 
         Is s { get; }
 
