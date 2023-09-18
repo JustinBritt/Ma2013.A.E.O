@@ -148,7 +148,9 @@
 
             this.WardDayBedRequirementVariances = Variance_wd
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                TPModel.d,
+                TPModel.w);
 
             // DayBedRequirementMeans(d)
             this.DayBedRequirementMeans = calculationsAbstractFactory.CreateDayBedRequirementMeansCalculationFactory().Create()
