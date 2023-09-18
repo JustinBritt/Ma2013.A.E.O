@@ -28,6 +28,8 @@
 
         Id d { get; }
 
+        Ik k { get; }
+
         Ip p { get; }
 
         Ir r { get; }
