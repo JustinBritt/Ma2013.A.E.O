@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Interfaces.Contexts.TP
 {
     using System;
-    using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
 
@@ -51,7 +50,7 @@
 
         RedBlackTree<Organization, INullableValue<int>> WardNumberBedAssignments { get; }
 
-        ImmutableList<Tuple<Organization, FhirDateTime, Location, INullableValue<int>, INullableValue<bool>>> SurgeonGroupActiveDayOperatingRoomBlockTypeAssignments { get; }
+        RedBlackTree<Organization, RedBlackTree<FhirDateTime, RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<bool>>>>> SurgeonGroupActiveDayOperatingRoomBlockTypeAssignments { get; }
 
         RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> WardDayBedAvailabilityMinusDeviations { get; }
 

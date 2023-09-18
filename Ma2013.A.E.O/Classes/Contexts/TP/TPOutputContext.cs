@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Classes.Contexts.TP
 {
     using System;
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
@@ -350,7 +349,7 @@
 
         public RedBlackTree<Organization, INullableValue<int>> WardNumberBedAssignments { get; }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, Location, INullableValue<int>, INullableValue<bool>>> SurgeonGroupActiveDayOperatingRoomBlockTypeAssignments { get; }
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, RedBlackTree<Location, RedBlackTree<INullableValue<int>, INullableValue<bool>>>>> SurgeonGroupActiveDayOperatingRoomBlockTypeAssignments { get; }
 
         public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> WardDayBedAvailabilityMinusDeviations { get; }
 
