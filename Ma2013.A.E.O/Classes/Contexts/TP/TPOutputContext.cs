@@ -98,7 +98,9 @@
                 resultsAbstractFactory.CreateδMinusFactory(),
                 TPModel.wd)
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                TPModel.d,
+                TPModel.w);
 
             // δPlus(w)
             this.WardSpareBeds = TPModel.δPlus_w.GetElementsAt(
