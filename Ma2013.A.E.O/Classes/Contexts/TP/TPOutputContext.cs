@@ -128,7 +128,9 @@
 
             this.WardDayBedRequirementMeans = μ
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                TPModel.d,
+                TPModel.w);
 
             // Variance(w)
             this.WardBedOccupancyVariances = TPModel.Variance_w.GetElementsAt(
