@@ -63,6 +63,6 @@
 
         RedBlackTree<Organization, INullableValue<decimal>> WardBedOccupancyVariances { get; }
 
-        ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> WardDayBedRequirementVariances { get; }
+        RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> WardDayBedRequirementVariances { get; }
     }
 }

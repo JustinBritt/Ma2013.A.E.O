@@ -361,6 +361,6 @@
 
         public RedBlackTree<Organization, INullableValue<decimal>> WardBedOccupancyVariances { get; }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> WardDayBedRequirementVariances { get; }
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> WardDayBedRequirementVariances { get; }
     }
 }
