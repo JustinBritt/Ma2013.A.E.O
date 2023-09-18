@@ -90,7 +90,9 @@
                 resultsAbstractFactory.CreateSPzFactory(),
                 SPModel.sa)
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                SPModel.a,
+                SPModel.s);
         }
 
         public INullableValue<decimal> BestBound { get; }
