@@ -89,6 +89,7 @@
                 .GetValueForOutputContext(
                 dependenciesAbstractFactory.CreateNullableValueFactory(),
                 TPModel.a,
+                TPModel.r,
                 TPModel.s);
 
             // δMinus(w, d)
