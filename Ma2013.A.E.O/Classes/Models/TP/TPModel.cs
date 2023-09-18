@@ -7,6 +7,7 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
     using NGenerics.Patterns.Visitor;
 
     using OPTANO.Modeling.Optimization;
@@ -22,6 +23,7 @@
     using Ma2013.A.E.O.Interfaces.Parameters.Common.NumberBeds;
     using Ma2013.A.E.O.Interfaces.Parameters.Common.PatientGroupSurgeryDurations;
     using Ma2013.A.E.O.Interfaces.Parameters.Common.SurgicalSpecialties;
+    using Ma2013.A.E.O.Interfaces.Parameters.Common.WardPatientGroupActiveDays;
     using Ma2013.A.E.O.Interfaces.Parameters.TP.BlockTypeTimeBlockLengths;
     using Ma2013.A.E.O.Interfaces.Parameters.TP.DayOperatingRoomOperatingCapacities;
     using Ma2013.A.E.O.Interfaces.Parameters.TP.PatientGroupDayLengthOfStayProbabilities;
@@ -34,9 +36,6 @@
     using Ma2013.A.E.O.Interfaces.Variables.TP.WardNumberBedAssignments;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.Common;
     using Ma2013.A.E.O.InterfacesVisitors.Contexts.TP;
-    using Ma2013.A.E.O.Visitors.Contexts.TP;
-    using NGenerics.DataStructures.Trees;
-    using Ma2013.A.E.O.Interfaces.Parameters.Common.WardPatientGroupActiveDays;
 
     internal sealed class TPModel : ITPModel
     {
