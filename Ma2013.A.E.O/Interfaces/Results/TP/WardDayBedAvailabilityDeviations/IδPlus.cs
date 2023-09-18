@@ -5,6 +5,7 @@
 
     using Hl7.Fhir.Model;
 
+    using Ma2013.A.E.O.Interfaces.Indices.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.TP.WardDayBedAvailabilityDeviations;
     using Ma2013.A.E.O.InterfacesFactories.Dependencies.Hl7.Fhir.R4.Model;
 
@@ -13,6 +14,8 @@
         ImmutableList<IδPlusResultElement> Value { get; }
 
         ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> GetValueForOutputContext(
-            INullableValueFactory nullableValueFactory);
+            INullableValueFactory nullableValueFactory,
+            Ma2013.A.E.O.Interfaces.Indices.Common.Id d,
+            Iw w);
     }
 }

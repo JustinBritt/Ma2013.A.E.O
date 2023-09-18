@@ -116,7 +116,9 @@
                 resultsAbstractFactory.CreateδPluswdFactory(),
                 TPModel.wd)
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                TPModel.d,
+                TPModel.w);
 
             // μ(w, d)
             Interfaces.Results.TP.WardDayBedRequirementMeans.Iμ μ = TPModel.μ.GetElementsAt(
