@@ -87,7 +87,9 @@
 
             this.SurgeonGroupActiveDayOperatingRoomBlockTypeAssignments = z
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                TPModel.a,
+                TPModel.s);
 
             // δMinus(w, d)
             this.WardDayBedAvailabilityMinusDeviations = TPModel.δMinus.GetElementsAt(
