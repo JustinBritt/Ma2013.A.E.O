@@ -20,6 +20,8 @@
 
         Ip p { get; }
 
+        Is s { get; }
+
         Iw w { get; }
 
         Ipa pa { get; }
