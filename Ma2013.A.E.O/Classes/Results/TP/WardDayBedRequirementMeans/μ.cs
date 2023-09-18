@@ -1,12 +1,13 @@
 ﻿namespace Ma2013.A.E.O.Classes.Results.TP.WardDayBedRequirementMeans
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.Indices.Common;
@@ -36,19 +37,35 @@
                 .SingleOrDefault();
         }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> GetValueForOutputContext(
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory,
             Ma2013.A.E.O.Interfaces.Indices.Common.Id d,
             Iw w)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    i.wIndexElement.Value,
-                    i.dIndexElement.Value,
-                    nullableValueFactory.Create<decimal>(
-                        i.Value)))
-                .ToImmutableList();
+            RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> outerRedBlackTree = new RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>>(
+                new Ma2013.A.E.O.Classes.Comparers.OrganizationComparer());
+
+            foreach (IwIndexElement wIndexElement in w.Value.Values)
+            {
+                RedBlackTree<FhirDateTime, INullableValue<decimal>> innerRedBlackTree = new RedBlackTree<FhirDateTime, INullableValue<decimal>>(
+                    new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+
+                foreach (IdIndexElement dIndexElement in d.Value.Values)
+                {
+                    innerRedBlackTree.Add(
+                        dIndexElement.Value,
+                        nullableValueFactory.Create<decimal>(
+                            this.GetElementAtAsdecimal(
+                                wIndexElement,
+                                dIndexElement)));
+                }
+
+                outerRedBlackTree.Add(
+                    wIndexElement.Value,
+                    innerRedBlackTree);
+            }
+
+            return outerRedBlackTree;
         }
     }
 }
