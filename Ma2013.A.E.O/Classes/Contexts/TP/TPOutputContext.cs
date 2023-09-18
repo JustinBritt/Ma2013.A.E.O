@@ -67,7 +67,9 @@
 
             this.PatientGroupActiveDayNumberPatientAssignments = x
                 .GetValueForOutputContext(
-                dependenciesAbstractFactory.CreateNullableValueFactory());
+                dependenciesAbstractFactory.CreateNullableValueFactory(),
+                TPModel.a,
+                TPModel.p);
 
             // y(w)
             this.WardNumberBedAssignments = TPModel.y.GetElementsAt(
