@@ -1,9 +1,10 @@
 ﻿namespace Ma2013.A.E.O.Interfaces.Results.SP.SurgeonGroupActiveDayNumberBlockAssignments
 {
-    using System;
     using System.Collections.Immutable;
 
     using Hl7.Fhir.Model;
+
+    using NGenerics.DataStructures.Trees;
 
     using Ma2013.A.E.O.Interfaces.Indices.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.SP.SurgeonGroupActiveDayNumberBlockAssignments;
@@ -13,7 +14,7 @@
     {
         ImmutableList<ISPzResultElement> Value { get; }
 
-        ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<int>>> GetValueForOutputContext(
+        RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<int>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory,
             Ia a,
             Is s);

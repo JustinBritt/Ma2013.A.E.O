@@ -1,7 +1,6 @@
 ﻿namespace Ma2013.A.E.O.Classes.Contexts.SP
 {
     using System;
-    using System.Collections.Immutable;
     using System.Linq;
 
     using log4net;
@@ -111,6 +110,6 @@
 
         public RedBlackTree<Organization, INullableValue<int>> WardNumberBedAssignments { get; }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<int>>> SurgeonGroupActiveDayNumberBlockAssignments { get; }
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<int>>> SurgeonGroupActiveDayNumberBlockAssignments { get; }
     }
 }
