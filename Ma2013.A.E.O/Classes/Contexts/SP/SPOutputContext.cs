@@ -105,7 +105,7 @@
 
         public INullableValue<decimal> TotalFinancialContribution { get; }
 
-        public ImmutableList<Tuple<INullableValue<int>, FhirDateTime, INullableValue<int>>> PatientGroupActiveDayNumberPatientAssignments { get; }
+        public RedBlackTree<INullableValue<int>, RedBlackTree<FhirDateTime, INullableValue<int>>> PatientGroupActiveDayNumberPatientAssignments { get; }
 
         public RedBlackTree<Organization, INullableValue<int>> WardNumberBedAssignments { get; }
 

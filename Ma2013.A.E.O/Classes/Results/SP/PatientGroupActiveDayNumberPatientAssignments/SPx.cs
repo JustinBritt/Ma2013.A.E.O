@@ -1,6 +1,5 @@
 ﻿namespace Ma2013.A.E.O.Classes.Results.SP.PatientGroupActiveDayNumberPatientAssignments
 {
-    using System;
     using System.Collections.Immutable;
     using System.Linq;
 
@@ -8,6 +7,9 @@
 
     using Hl7.Fhir.Model;
 
+    using NGenerics.DataStructures.Trees;
+
+    using Ma2013.A.E.O.Interfaces.IndexElements.Common;
     using Ma2013.A.E.O.Interfaces.Indices.Common;
     using Ma2013.A.E.O.Interfaces.ResultElements.SP.PatientGroupActiveDayNumberPatientAssignments;
     using Ma2013.A.E.O.Interfaces.Results.SP.PatientGroupActiveDayNumberPatientAssignments;
@@ -25,19 +27,45 @@
 
         public ImmutableList<ISPxResultElement> Value { get; }
 
-        public ImmutableList<Tuple<INullableValue<int>, FhirDateTime, INullableValue<int>>> GetValueForOutputContext(
+        public int GetElementAtAsint(
+            IpIndexElement pIndexElement,
+            IaIndexElement aIndexElement)
+        {
+            return this.Value
+                .Where(x => x.pIndexElement == pIndexElement && x.aIndexElement == aIndexElement)
+                .Select(x => x.Value)
+                .SingleOrDefault();
+        }
+
+        public RedBlackTree<INullableValue<int>, RedBlackTree<FhirDateTime, INullableValue<int>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory,
             Ia a,
             Ip p)
         {
-            return this.Value
-                .Select(
-                i => Tuple.Create(
-                    (INullableValue<int>)i.pIndexElement.Value,
-                    i.aIndexElement.Value,
-                    nullableValueFactory.Create<int>(
-                        i.Value)))
-                .ToImmutableList();
+            RedBlackTree<INullableValue<int>, RedBlackTree<FhirDateTime, INullableValue<int>>> outerRedBlackTree = new RedBlackTree<INullableValue<int>, RedBlackTree<FhirDateTime, INullableValue<int>>>(
+                new Ma2013.A.E.O.Classes.Comparers.NullableValueintComparer());
+
+            foreach (IpIndexElement pIndexElement in p.Value.Values)
+            {
+                RedBlackTree<FhirDateTime, INullableValue<int>> innerRedBlackTree = new RedBlackTree<FhirDateTime, INullableValue<int>>(
+                    new Ma2013.A.E.O.Classes.Comparers.FhirDateTimeComparer());
+
+                foreach (IaIndexElement aIndexElement in a.Value.Values)
+                {
+                    innerRedBlackTree.Add(
+                        aIndexElement.Value,
+                        nullableValueFactory.Create<int>(
+                            this.GetElementAtAsint(
+                                pIndexElement,
+                                aIndexElement)));
+                }
+
+                outerRedBlackTree.Add(
+                    pIndexElement.Value,
+                    innerRedBlackTree);
+            }    
+
+            return outerRedBlackTree;
         }
     }
 }
