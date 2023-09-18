@@ -23,7 +23,11 @@
         /// </summary>
         Model Model { get; }
 
+        Ia a { get; }
+
         Id d { get; }
+
+        Ip p { get; }
 
         Is s { get; }
 
