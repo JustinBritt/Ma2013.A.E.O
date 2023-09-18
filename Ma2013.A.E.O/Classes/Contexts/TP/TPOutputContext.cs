@@ -345,7 +345,7 @@
 
         public ImmutableList<Tuple<Organization, FhirDateTime, Location, INullableValue<int>, INullableValue<bool>>> SurgeonGroupActiveDayOperatingRoomBlockTypeAssignments { get; }
 
-        public ImmutableList<Tuple<Organization, FhirDateTime, INullableValue<decimal>>> WardDayBedAvailabilityMinusDeviations { get; }
+        public RedBlackTree<Organization, RedBlackTree<FhirDateTime, INullableValue<decimal>>> WardDayBedAvailabilityMinusDeviations { get; }
 
         public RedBlackTree<Organization, INullableValue<decimal>> WardSpareBeds { get; }
 
