@@ -43,6 +43,7 @@
         public ImmutableList<Tuple<Organization, FhirDateTime, Location, INullableValue<int>, INullableValue<bool>>> GetValueForOutputContext(
             INullableValueFactory nullableValueFactory,
             Ia a,
+            Ik k,
             Ir r,
             Is s)
         {

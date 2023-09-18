@@ -89,6 +89,7 @@
                 .GetValueForOutputContext(
                 dependenciesAbstractFactory.CreateNullableValueFactory(),
                 TPModel.a,
+                TPModel.k,
                 TPModel.r,
                 TPModel.s);
 
